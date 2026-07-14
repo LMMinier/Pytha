@@ -1,6 +1,7 @@
 package com.example.ui.screens
 
 import androidx.compose.animation.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -22,13 +23,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.ui.MainViewModel
 import com.example.ui.theme.*
 
@@ -309,7 +313,21 @@ fun PlaygroundScreen(
                         }
                     },
                     title = {
-                        Text("🐍 Monty's Code Review", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_monty_avatar),
+                                contentDescription = "Monty Avatar",
+                                modifier = Modifier
+                                    .size(44.dp)
+                                    .clip(CircleShape)
+                                    .border(2.dp, KidsPurple, CircleShape),
+                                contentScale = ContentScale.Crop
+                            )
+                            Text("Monty's Code Review", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
+                        }
                     },
                     text = {
                         Column(

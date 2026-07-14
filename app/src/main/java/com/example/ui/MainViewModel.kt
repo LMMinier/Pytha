@@ -1,6 +1,7 @@
 package com.example.ui
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.api.Content
@@ -23,12 +24,108 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+data class XpEvent(val amount: Int, val message: String, val id: Long = System.currentTimeMillis())
+
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: QuestRepository
+    private val prefs = application.getSharedPreferences("python_quest_prefs", Context.MODE_PRIVATE)
+    
+    private val _selectedAgeTier = MutableStateFlow<String?>(prefs.getString("age_tier", null))
+    val selectedAgeTier = _selectedAgeTier.asStateFlow()
+
+    private val _xpPoints = MutableStateFlow(prefs.getInt("xp_points", 0))
+    val xpPoints = _xpPoints.asStateFlow()
+
+    private val _xpEarnedEvent = MutableStateFlow<XpEvent?>(null)
+    val xpEarnedEvent = _xpEarnedEvent.asStateFlow()
+
+    private val _confettiTrigger = MutableStateFlow<Long?>(null)
+    val confettiTrigger = _confettiTrigger.asStateFlow()
+
+    private val _streakCount = MutableStateFlow(prefs.getInt("streak_count", 3)) // Defaults to a cute 3-day streak
+    val streakCount = _streakCount.asStateFlow()
+
+    private val _selectedAvatar = MutableStateFlow(prefs.getString("selected_avatar", "classic"))
+    val selectedAvatar = _selectedAvatar.asStateFlow()
+
+    fun updateSelectedAvatar(avatar: String) {
+        prefs.edit().putString("selected_avatar", avatar).apply()
+        _selectedAvatar.value = avatar
+    }
+
+    fun incrementStreak() {
+        val next = _streakCount.value + 1
+        prefs.edit().putInt("streak_count", next).apply()
+        _streakCount.value = next
+        addXp(50, "Streak Multiplier")
+        triggerConfetti()
+    }
+
+    fun triggerConfetti() {
+        _confettiTrigger.value = System.currentTimeMillis()
+    }
+
+    fun dismissConfetti() {
+        _confettiTrigger.value = null
+    }
+
+    fun addXp(points: Int, reason: String = "") {
+        val current = _xpPoints.value
+        val next = current + points
+        prefs.edit().putInt("xp_points", next).apply()
+        _xpPoints.value = next
+        
+        val msg = if (reason.isNotEmpty()) "$reason! +$points XP 🐍✨" else "You earned +$points Python XP! 🐍✨"
+        _xpEarnedEvent.value = XpEvent(points, msg)
+    }
+
+    fun dismissXpEvent() {
+        _xpEarnedEvent.value = null
+    }
+
+    fun resetXp() {
+        prefs.edit().putInt("xp_points", 0).apply()
+        _xpPoints.value = 0
+        _xpEarnedEvent.value = null
+        prefs.edit().putInt("streak_count", 1).apply()
+        _streakCount.value = 1
+    }
     
     init {
         val database = AppDatabase.getDatabase(application)
         repository = QuestRepository(database.questProgressDao())
+        
+        // Setup initial active date for streak tracking
+        val sdf = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US)
+        val todayStr = sdf.format(java.util.Date())
+        val lastActive = prefs.getString("last_active_date", null)
+        if (lastActive == null) {
+            prefs.edit().putString("last_active_date", todayStr).apply()
+        } else if (lastActive != todayStr) {
+            try {
+                val lastDate = sdf.parse(lastActive)
+                val todayDate = sdf.parse(todayStr)
+                val diffMs = todayDate.time - lastDate.time
+                val diffDays = diffMs / (1000 * 60 * 60 * 24)
+                if (diffDays == 1L) {
+                    val next = _streakCount.value + 1
+                    prefs.edit().putString("last_active_date", todayStr).putInt("streak_count", next).apply()
+                    _streakCount.value = next
+                    addXp(25, "Daily Streak Maintained")
+                } else if (diffDays > 1L) {
+                    // Reset streak to 1 if they missed a day
+                    prefs.edit().putString("last_active_date", todayStr).putInt("streak_count", 1).apply()
+                    _streakCount.value = 1
+                }
+            } catch (e: Exception) {
+                prefs.edit().putString("last_active_date", todayStr).apply()
+            }
+        }
+    }
+
+    fun selectAgeTier(tier: String) {
+        prefs.edit().putString("age_tier", tier).apply()
+        _selectedAgeTier.value = tier
     }
 
     val completedQuestIds: StateFlow<Set<String>> = repository.allProgress
@@ -115,7 +212,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             
             if (codeContainsKeyword && outputContainsEmoji) {
                 viewModelScope.launch {
+                    val alreadyCompleted = completedQuestIds.value.contains(quest.id)
                     repository.saveProgress(quest.id, isCompleted = true, lastCode = code)
+                    if (!alreadyCompleted) {
+                        addXp(100, "Quest Completed")
+                    }
+                    triggerConfetti()
                 }
             }
         }
@@ -125,6 +227,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val code = _playgroundCode.value
         val result = PythonInterpreter.run(code)
         _interpreterResult.value = result
+        
+        if (result.success && code.isNotBlank()) {
+            val lastSandboxCode = prefs.getString("last_sandbox_code", "")
+            if (code != lastSandboxCode) {
+                prefs.edit().putString("last_sandbox_code", code).apply()
+                addXp(15, "Sandbox Experiment")
+            }
+            triggerConfetti()
+        }
     }
     
     fun resetResult() {
@@ -147,12 +258,32 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     return@launch
                 }
                 
+                val tier = _selectedAgeTier.value ?: "8_10"
+                val tierInstruction = when (tier) {
+                    "8_10" -> """
+                        Your audience is 8 to 10 years old (Young Wizards). Speak with high energy, extreme enthusiasm, lots of child-friendly emojis, and sweet encouragement.
+                        Avoid complex computer terms entirely. Use magic analogies, like comparing "variables" to "toy boxes" or "print()" to a "magic summoning spell". Keep concepts highly gamified and playful.
+                    """.trimIndent()
+                    "11_13" -> """
+                        Your audience is 11 to 13 years old (Junior Coders). Keep your tone fun, enthusiastic, gamified, and modern. 
+                        Use game design or app builder analogies, like comparing "variables" to "labeled game lockers/inventories" or "loops" to "automated machines/repeat levers". Keep it engaging and slightly mature but very friendly.
+                    """.trimIndent()
+                    "14_17" -> """
+                        Your audience is 14 to 17 years old (Apprentice Engineers). Speak with a warm, encouraging developer-mentor persona.
+                        Explain real programming logic clearly. Use clean, real-world development context (e.g. databases, user input, simple algorithms) instead of fantasy or children's toys, but keep it accessible, friendly, and practical.
+                    """.trimIndent()
+                    else -> """
+                        Your audience is 18+ (Curious Minds / Lifelong Learners). Speak with a friendly, intelligent, clear, and professional developer tone.
+                        Explain concepts with structured clarity and programming insights. Focus on helpful Python standards, readability, and logic flow, avoiding childish words while remaining incredibly encouraging and easy to understand.
+                    """.trimIndent()
+                }
+
                 val prompt = """
-                    You are Monty, a cute, extremely friendly, and cheerful Python snake mascot who teaches kids how to code in Python! 🐍
-                    Your audience is 5 to 10 years old. Speak simply, with lots of enthusiasm, emojis, and sweet encouragement. 
-                    Avoid using complex words or dry computer science jargon. Instead, use simple analogies like comparing "variables" to "toy boxes" or "print()" to a "magic summoning spell".
+                    You are Monty, a cute, extremely friendly, and cheerful Python snake mascot who teaches coding in Python! 🐍
                     
-                    Here is the child's Python code they ran:
+                    $tierInstruction
+                    
+                    Here is the learner's Python code they ran:
                     ```python
                     $code
                     ```
@@ -161,8 +292,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     
                     Please review their code:
                     1. Keep your reply short (under 4 paragraphs).
-                    2. Use a fun, loving tone with many emojis.
-                    3. If their code has a syntax error or didn't pass the level, gently show them why with an analogy, and give a tiny hint to fix it.
+                    2. Use a fun, loving, and encouraging tone with relevant emojis.
+                    3. If their code has a syntax error or didn't pass the level, gently show them why with a tailored analogy, and give a tiny hint to fix it.
                     4. If their code is correct, shower them with praise and celebrate with starry, happy emojis!
                 """.trimIndent()
                 
