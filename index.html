@@ -103,9 +103,9 @@
                 <div class="relative w-40 h-40 mx-auto">
                     <!-- Wizard Avatar Frame -->
                     <div class="w-full h-full rounded-full bg-gradient-to-tr from-kidsPurple to-indigo-500 flex items-center justify-center shadow-lg border-4 border-kidsBorder animate-bounce">
-                        <span class="text-7xl">💻</span>
+                        <span class="text-white text-5xl"><i class="fa-solid fa-laptop-code"></i></span>
                     </div>
-                    <div class="absolute -bottom-2 -right-2 bg-kidsGreen border-2 border-slate-950 rounded-full p-2 text-xl shadow">🐍</div>
+                    <div class="absolute -bottom-2 -right-2 bg-kidsGreen border-2 border-slate-950 rounded-full w-10 h-10 flex items-center justify-center text-white text-sm shadow"><i class="fa-solid fa-shield-halved"></i></div>
                 </div>
 
                 <div>
@@ -116,7 +116,7 @@
                 <div class="space-y-4">
                     <!-- Explorer tier -->
                     <button onclick="selectAgeTier('5-7')" class="w-full p-4 rounded-2xl border-2 border-kidsBorder hover:border-kidsGreen bg-slate-950/50 hover:bg-slate-950 flex items-center gap-4 transition text-left group">
-                        <div class="bg-kidsPurple text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition">🛡️</div>
+                        <div class="bg-kidsPurple text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved text-white text-base"></i></div>
                         <div>
                             <div class="font-bold text-textDark text-base font-fredoka">Cyberpunk Novice</div>
                             <div class="text-xs text-textLight">No prior experience. Intuitive visual guides, fundamental logic gates!</div>
@@ -125,7 +125,7 @@
 
                     <!-- Wizard tier -->
                     <button onclick="selectAgeTier('8-11')" class="w-full p-4 rounded-2xl border-2 border-kidsBorder hover:border-kidsOrange bg-slate-950/50 hover:bg-slate-950 flex items-center gap-4 transition text-left group">
-                        <div class="bg-kidsOrange text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition">⚙️</div>
+                        <div class="bg-kidsOrange text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition"><i class="fa-solid fa-microchip text-white text-base"></i></div>
                         <div>
                             <div class="font-bold text-textDark text-base font-fredoka">Mainframe Architect</div>
                             <div class="text-xs text-textLight">Full code IDE, automation scripts, loop buffers, and active conditions!</div>
@@ -144,21 +144,21 @@
                 <div class="flex items-center gap-3">
                     <div onclick="navigateTo('profile')" class="cursor-pointer hover:scale-105 transition relative">
                         <div id="header-avatar-bg" class="w-12 h-12 rounded-full bg-gradient-to-tr from-kidsPurple to-indigo-500 flex items-center justify-center border-2 border-white shadow">
-                            <span class="text-2xl">🐍</span>
+                            <i class="fa-solid fa-user text-white text-base"></i>
                         </div>
-                        <div class="absolute -bottom-1 -right-1 bg-white rounded-full w-5 h-5 flex items-center justify-center border text-[10px] shadow">👤</div>
+                        <div class="absolute -bottom-1 -right-1 bg-white rounded-full w-5 h-5 flex items-center justify-center border text-[10px] shadow"><i class="fa-solid fa-user text-slate-500 text-[8px]"></i></div>
                     </div>
                     <div>
                         <div class="text-xs font-bold text-kidsPurple">CYBER SYSTEM TERMINAL</div>
                         <h2 class="text-lg font-black text-textDark leading-tight flex items-center gap-1">
-                            System Access Initialized 👋
+                            System Access Initialized
                         </h2>
                     </div>
                 </div>
 
                 <!-- Streak badge -->
-                <div onclick="navigateTo('profile')" class="cursor-pointer flex items-center gap-1 bg-orange-100 border-2 border-orange-200 text-orange-600 px-3 py-1.5 rounded-full hover:scale-105 transition">
-                    <span>🔥</span>
+                <div onclick="navigateTo('profile')" class="cursor-pointer flex items-center gap-1.5 bg-orange-100 border-2 border-orange-200 text-orange-600 px-3 py-1.5 rounded-full hover:scale-105 transition">
+                    <i class="fa-solid fa-fire text-orange-500 text-sm"></i>
                     <span id="dash-streak" class="font-bold text-xs">3 Days</span>
                 </div>
             </header>
@@ -171,13 +171,13 @@
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full translate-x-10 -translate-y-10"></div>
                     <div class="text-center md:text-left space-y-2 flex-1">
                         <span class="bg-kidsOrange text-textDark text-[10px] font-black px-3 py-1 rounded-full uppercase">Daemon Connected</span>
-                        <h1 id="welcome-message" class="text-2xl font-bold leading-tight">System AI Daemon Active! 💻</h1>
+                        <h1 id="welcome-message" class="text-2xl font-bold leading-tight">System AI Daemon Active!</h1>
                         <p class="text-violet-100 text-sm">Run dynamic Python automated tasks, compile files in the sandbox, and unlock elite micro-credentials!</p>
-                        <button onclick="navigateTo('profile')" class="mt-2 text-xs bg-white text-kidsPurple font-extrabold px-4 py-2 rounded-xl shadow hover:bg-violet-50 transition inline-flex items-center gap-1">
-                            View Operator Profile 👤
+                        <button onclick="navigateTo('profile')" class="mt-2 text-xs bg-white text-kidsPurple font-extrabold px-4 py-2 rounded-xl shadow hover:bg-violet-50 transition inline-flex items-center gap-1.5">
+                            View Operator Profile <i class="fa-solid fa-user-gear"></i>
                         </button>
                     </div>
-                    <div class="text-7xl md:mr-4 animate-pulse">💻</div>
+                    <div class="text-5xl text-violet-200 md:mr-4 animate-pulse"><i class="fa-solid fa-terminal"></i></div>
                 </div>
 
                 <!-- Wizard Progress Summary Card -->
@@ -257,15 +257,15 @@
                         <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow hover:shadow-md transition space-y-4">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl">🧪</div>
+                                    <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-xl text-amber-500"><i class="fa-solid fa-flask"></i></div>
                                     <div>
                                         <h4 class="font-bold text-textDark">Free Coding Sandbox</h4>
                                         <p class="text-xs text-textLight">Experiment freely & write custom Python!</p>
                                     </div>
                                 </div>
                             </div>
-                            <button onclick="navigateTo('playground')" class="w-full bg-kidsOrange hover:bg-amber-600 text-white font-extrabold py-3 rounded-2xl shadow-md transition transform hover:scale-[1.02]">
-                                Enter Code Lab 🚀
+                            <button onclick="navigateTo('playground')" class="w-full bg-kidsOrange hover:bg-amber-600 text-white font-extrabold py-3 rounded-2xl shadow-md transition transform hover:scale-[1.02] flex items-center justify-center gap-1.5">
+                                Enter Code Lab <i class="fa-solid fa-terminal"></i>
                             </button>
                         </div>
 
@@ -311,19 +311,19 @@
                 <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow text-center space-y-6">
                     <div class="relative w-36 h-36 mx-auto">
                         <div id="profile-avatar-glow" class="w-full h-full rounded-full bg-gradient-to-tr from-kidsPurple to-indigo-500 flex items-center justify-center border-4 border-white shadow-lg relative overflow-hidden">
-                            <span id="profile-avatar-emoji" class="text-7xl select-none">💻</span>
+                            <span id="profile-avatar-emoji" class="text-white text-5xl select-none"><i class="fa-solid fa-terminal"></i></span>
                         </div>
-                        <div id="profile-avatar-badge" class="absolute -bottom-1 -right-1 bg-white border-2 border-kidsPurple rounded-full w-10 h-10 flex items-center justify-center text-xl shadow">🔑</div>
+                        <div id="profile-avatar-badge" class="absolute -bottom-1 -right-1 bg-white border-2 border-kidsPurple rounded-full w-10 h-10 flex items-center justify-center text-sm shadow"></div>
                     </div>
 
                     <div>
-                        <h2 id="profile-avatar-title" class="text-xl font-bold text-textDark">Terminal Console AI 💻</h2>
+                        <h2 id="profile-avatar-title" class="text-xl font-bold text-textDark">Terminal Console AI</h2>
                         <p id="profile-avatar-desc" class="text-xs text-textLight mt-1 max-w-sm mx-auto">Core systemic AI compiler designed for micro-service diagnostics.</p>
                     </div>
 
                     <!-- Companion Chooser -->
                     <div class="space-y-3 pt-2 text-left">
-                        <h4 class="font-bold text-xs text-kidsPurple tracking-wide uppercase">Activate System AI Companion 💻</h4>
+                        <h4 class="font-bold text-xs text-kidsPurple tracking-wide uppercase">Activate System AI Companion</h4>
                         <div class="grid grid-cols-4 gap-2" id="avatar-chooser-grid">
                             <!-- Avatars rendered here by JS -->
                         </div>
@@ -355,11 +355,11 @@
                 <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow space-y-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h4 class="font-bold text-textDark">Terminal Activity Flame 🔥</h4>
+                            <h4 class="font-bold text-textDark flex items-center gap-1.5">Terminal Activity Flame <i class="fa-solid fa-fire text-orange-500 text-sm animate-pulse"></i></h4>
                             <p class="text-xs text-textLight">Learn daily to keep the fire lit!</p>
                         </div>
-                        <div class="flex items-center gap-1 bg-orange-100 border-2 border-orange-200 text-orange-600 px-3 py-1.5 rounded-full font-bold text-sm">
-                            <span>🔥</span>
+                        <div class="flex items-center gap-1.5 bg-orange-100 border-2 border-orange-200 text-orange-600 px-3 py-1.5 rounded-full font-bold text-sm">
+                            <i class="fa-solid fa-fire text-orange-500 text-sm animate-pulse"></i>
                             <span id="profile-streak-count">3 Days</span>
                         </div>
                     </div>
@@ -371,13 +371,13 @@
 
                     <!-- Booster button -->
                     <button onclick="simulateStreakQuest()" class="w-full py-3 px-4 bg-kidsPurple hover:bg-violet-700 text-white font-extrabold rounded-2xl shadow transition flex items-center justify-center gap-2 text-sm">
-                        <span>🚀</span> Simulate Daily Quest (+50 XP!)
+                        <i class="fa-solid fa-bolt"></i> Simulate Daily Quest (+50 XP!)
                     </button>
                 </div>
 
                 <!-- MY UNLOCKED BADGES -->
                 <div class="space-y-4">
-                    <h3 class="text-lg font-bold text-textDark">My Unlocked Badges 🏆</h3>
+                    <h3 class="text-lg font-bold text-textDark flex items-center gap-1.5">My Unlocked Badges <i class="fa-solid fa-trophy text-amber-500 text-base"></i></h3>
                     <div class="space-y-3" id="badges-registry-container">
                         <!-- Badges rendered by JS -->
                     </div>
@@ -400,7 +400,7 @@
                         <h2 id="quest-title" class="text-lg font-black text-textDark leading-tight">Summon Your First Animal!</h2>
                     </div>
                 </div>
-                <div class="text-3xl" id="quest-header-icon">🐍</div>
+                <div id="quest-header-icon" class="w-10 h-10 bg-violet-50 rounded-xl flex items-center justify-center text-xl text-kidsPurple"></div>
             </header>
 
             <div class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -489,11 +489,11 @@
                         <i class="fa-solid fa-arrow-left"></i>
                     </button>
                     <div>
-                        <div class="text-xs font-bold text-kidsPurple">FREE PLAYGROUND LAB 🧪</div>
+                        <div class="text-xs font-bold text-kidsPurple flex items-center gap-1">FREE PLAYGROUND LAB <i class="fa-solid fa-flask text-[10px]"></i></div>
                         <h2 class="text-lg font-black text-textDark leading-tight">Python Sandbox</h2>
                     </div>
                 </div>
-                <div class="text-3xl">🎈</div>
+                <div id="sandbox-header-icon" class="w-10 h-10 bg-violet-50 rounded-xl flex items-center justify-center text-xl text-kidsPurple"><i class="fa-solid fa-flask"></i></div>
             </header>
 
             <div class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -501,7 +501,7 @@
                 <div class="space-y-6 flex flex-col justify-between">
                     <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow space-y-4">
                         <h3 class="font-bold text-kidsPurple text-lg flex items-center gap-2">
-                            <span>💡</span> Sandbox Lab Instructions
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Sandbox Lab Instructions
                         </h3>
                         <p class="text-sm text-textDark leading-relaxed">
                             Welcome to the Sandbox! Here, there are no strict rules. You can write any Python code you want, test loops, assign variables, and see the compiler run in real time!
@@ -561,7 +561,7 @@ print(apples + oranges)</textarea>
 
                     <!-- Run -->
                     <button onclick="runSandboxCode()" class="w-full py-4 bg-kidsOrange hover:bg-amber-600 text-white text-base font-black rounded-3xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-play"></i> RUN PLAYGROUND CODE! 🧪
+                        <i class="fa-solid fa-play"></i> RUN PLAYGROUND CODE!
                     </button>
                 </div>
             </div>
@@ -594,8 +594,8 @@ print(apples + oranges)</textarea>
                             <h3 id="read-book-title" class="text-xl font-black text-kidsPurple">Book Title</h3>
                             <p id="read-book-author" class="text-xs text-textLight">Author</p>
                         </div>
-                        <button onclick="closeBookReader()" class="text-xs font-bold px-4 py-2 border rounded-xl hover:bg-gray-50 transition">
-                            Close Book 🚪
+                        <button onclick="closeBookReader()" class="text-xs font-bold px-4 py-2 border rounded-xl hover:bg-gray-50 transition flex items-center gap-1.5">
+                            Close Book <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
 
@@ -629,7 +629,7 @@ print(apples + oranges)</textarea>
                             </div>
 
                             <button onclick="runChapterCode()" class="w-full py-3 bg-kidsPurple hover:bg-violet-700 text-white text-sm font-extrabold rounded-2xl shadow transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-play"></i> Run Chapter Spell! 🔮
+                                <i class="fa-solid fa-play"></i> Run Chapter Script
                             </button>
                         </div>
                     </div>
@@ -644,7 +644,7 @@ print(apples + oranges)</textarea>
                 <div class="absolute -top-12 -left-12 w-28 h-28 bg-yellow-300 opacity-20 rounded-full"></div>
                 <div class="absolute -bottom-12 -right-12 w-28 h-28 bg-kidsPurple opacity-10 rounded-full"></div>
 
-                <div class="text-6xl animate-bounce">✨🏆✨</div>
+                <div class="text-5xl text-amber-500 animate-bounce"><i class="fa-solid fa-award"></i></div>
 
                 <div>
                     <div class="text-xs font-black text-kidsPurple tracking-wider uppercase mb-1">Compile Milestone!</div>
@@ -672,14 +672,14 @@ print(apples + oranges)</textarea>
                 id: "quest_1",
                 title: "Boot Up the AI Core!",
                 levelName: "Level 1: System Boot",
-                icon: "🤖",
+                iconClass: "fa-solid fa-power-off text-indigo-500",
                 description: "Run your first Python output command to initialize the system console!",
-                story: "Welcome to the Python Quest Cyber Terminal. You are initiating standard mainframe terminal access. In Python, the print() function sends data out to the display buffer. Let's start by waking up the primary AI Daemon (represented by 🤖) to verify system-wide visual response.",
-                instruction: "Tap the puzzle blocks to write print(\"🤖\") and execute the runtime!",
-                startingCode: "# Wake up the AI Daemon!\n",
-                blocks: ["print(", "\"🤖\"", "\"💥\"", "\"⚡\"", ")"],
+                story: "Welcome to the Cyber Terminal. You are initiating standard mainframe terminal access. In Python, the print() function sends data out to the display buffer. Let's start by waking up the primary AI Core to verify system-wide console response.",
+                instruction: "Tap the puzzle blocks to write print(\"SYSTEM_ONLINE\") and execute the runtime!",
+                startingCode: "# Wake up the AI Core!\n",
+                blocks: ["print(", "\"SYSTEM_ONLINE\"", "\"OFFLINE\"", "\"ERR\"", ")"],
                 targetKeyword: "print",
-                targetEmoji: "🤖",
+                targetValue: "SYSTEM_ONLINE",
                 conceptTitle: "Standard Output",
                 conceptExplanation: "The print() function is the fundamental way to communicate with developers. It evaluates the expression inside the parentheses (arguments) and writes it to the standard output terminal. String literals are enclosed in quotes."
             },
@@ -687,29 +687,29 @@ print(apples + oranges)</textarea>
                 id: "quest_2",
                 title: "Memory Allocation Key",
                 levelName: "Level 2: Variables",
-                icon: "🔑",
+                iconClass: "fa-solid fa-key text-amber-500",
                 description: "Discover Variables - named memory locations used to store program data dynamically!",
-                story: "Console initialized. Next, we must register credentials. In programming, we store values in memory using 'variables' (custom labeled containers). By assigning an access token (like a key \"🔑\") to a variable name, we can refer back to it and execute authorization scripts seamlessly!",
-                instruction: "Create a box named 'token' and store \"🔑\" in it. Then, print(token) to request node access!",
-                startingCode: "token = \"🔑\"\n# Write print(token) below to load the credentials:\n",
-                blocks: ["print(", "token", "\"🔑\"", ")"],
+                story: "Console initialized. Next, we must register credentials. In programming, we store values in memory using 'variables' (custom labeled containers). By assigning a token key \"ACCESS_TOKEN\" to a variable name, we can refer back to it and execute authorization scripts seamlessly!",
+                instruction: "Create a variable named 'token' and store \"ACCESS_TOKEN\" in it. Then, print(token) to request node access!",
+                startingCode: "token = \"ACCESS_TOKEN\"\n# Write print(token) below to load the credentials:\n",
+                blocks: ["print(", "token", "\"ACCESS_TOKEN\"", ")"],
                 targetKeyword: "print(token)",
-                targetEmoji: "🔑",
+                targetValue: "ACCESS_TOKEN",
                 conceptTitle: "Variable Assignment",
-                conceptExplanation: "Variables hold values so your programs can remember and manipulate data. Writing token = \"🔑\" assigns the string \"🔑\" to the variable named 'token'. Calling print(token) retrieves whatever is currently stored in that address."
+                conceptExplanation: "Variables hold values so your programs can remember and manipulate data. Writing token = \"ACCESS_TOKEN\" assigns the string value to the variable named 'token'. Calling print(token) retrieves whatever is currently stored in that address."
             },
             {
                 id: "quest_3",
                 title: "Threat Mitigation Loop",
                 levelName: "Level 3: Automation Loops",
-                icon: "🛡️",
+                iconClass: "fa-solid fa-shield-halved text-emerald-500",
                 description: "Automate security loops to clear firewall blocks with repeated shield pings!",
                 story: "Alert! Minor intrusion detected in firewall sector 3. To defend our subnet, we need to deploy three visual defensive shields. Instead of writing print statements over and over, professional developers automate execution using a 'for loop'!",
-                instruction: "Write an automated loop to print(\"🛡️\") three times and secure the sector!",
-                startingCode: "for i in range(3):\n    # Type print(\"🛡️\") below (make sure to indent it with spaces!):\n    ",
-                blocks: ["for i in range(3):", "  print(", "\"🛡️\"", ")"],
+                instruction: "Write an automated loop to print(\"[PORT_SECURED]\") three times and secure the sector!",
+                startingCode: "for i in range(3):\n    # Type print(\"[PORT_SECURED]\") below (make sure to indent it with spaces!):\n    ",
+                blocks: ["for i in range(3):", "  print(", "\"[PORT_SECURED]\"", ")"],
                 targetKeyword: "range(3)",
-                targetEmoji: "🛡️",
+                targetValue: "[PORT_SECURED]",
                 conceptTitle: "For Loops",
                 conceptExplanation: "A 'for' loop tells Python to repeat a block of code. 'for i in range(3):' means 'repeat the indented lines under me exactly 3 times!'. Python uses indentation (spaces) to define block scoping."
             },
@@ -717,14 +717,14 @@ print(apples + oranges)</textarea>
                 id: "quest_4",
                 title: "The Decryption Branch Gate",
                 levelName: "Level 4: Boolean Conditions",
-                icon: "🔓",
+                iconClass: "fa-solid fa-lock-open text-pink-500",
                 description: "Design an active decider that branches execution based on system conditions!",
-                story: "Excellent progress, Operator. We're at the bypass router! Sometimes programs make logical choices dynamically based on variables. If system power is optimal, output '🔓' to bypass the node; otherwise (else), return the alert '🚨'. Let's write the decider!",
-                instruction: "Complete the decider block! If system power is high, output the bypass signal \"🔓\"!",
-                startingCode: "power = 10\nif power > 5:\n    # Print the bypass success signal '🔓' here!\n    \nelse:\n    print(\"🚨\")\n",
-                blocks: ["print(", "\"🔓\"", "\"🚨\"", ")"],
+                story: "Excellent progress, Operator. We're at the bypass router! Sometimes programs make logical choices dynamically based on variables. If system power is optimal, output 'BYPASS_NODE' to bypass the node; otherwise (else), return the alert 'CRITICAL_ALERT'. Let's write the decider!",
+                instruction: "Complete the decider block! If system power is high, output the bypass signal \"BYPASS_NODE\"!",
+                startingCode: "power = 10\nif power > 5:\n    # Print the bypass success signal 'BYPASS_NODE' here!\n    \nelse:\n    print(\"CRITICAL_ALERT\")\n",
+                blocks: ["print(", "\"BYPASS_NODE\"", "\"CRITICAL_ALERT\"", ")"],
                 targetKeyword: "if",
-                targetEmoji: "🔓",
+                targetValue: "BYPASS_NODE",
                 conceptTitle: "Conditional Logic",
                 conceptExplanation: "An 'if' statement tests a boolean expression. If that condition is true, only the block indented under 'if' runs. Otherwise, execution shifts to the 'else:' block. This is how programs make adaptive decisions."
             }
@@ -733,61 +733,61 @@ print(apples + oranges)</textarea>
         const books = [
             {
                 id: "games_python",
-                title: "Invent Your Own Computer Games with Python",
+                title: "Algorithmic Development with Python",
                 author: "Al Sweigart",
-                description: "Learn how to program by making fun, interactive text-based computer games! Ideal for visual thinkers and younger learners.",
-                recommendedAge: "Ages 8-13 (Young Wizards)",
-                coverEmoji: "🎮",
+                description: "Learn how to program by designing interactive, core algorithmic processes! Ideal for visual thinkers and structural beginner developers.",
+                recommendedAge: "Novice Specialization Track",
+                iconClass: "fa-solid fa-gamepad text-emerald-500",
                 chapters: [
                     {
-                        title: "Chapter 1: The Magic of Print",
-                        content: "In game programming, the computer needs to speak to the player. We do this by printing text to the screen.\n\nIn Python, the print() function displays whatever is between the quotation marks. E.g., print(\"Hello, Player!\") outputs the text.\n\nTry writing a greeting to welcome players to your first game adventure!",
-                        tryCode: "# Start your game adventure!\nprint(\"🎮 Welcome to the Dragon's Castle! 🐉\")\nprint(\"Are you ready to play?\")"
+                        title: "Chapter 1: The Print Stream Protocol",
+                        content: "In systems programming, the application must communicate status metrics. We do this by outputting text streams to the terminal buffer.\n\nIn Python, the print() function displays whatever is between the quotation marks. E.g., print(\"SYSTEM_ONLINE\") outputs the text.\n\nTry writing a simple greeting to verify core system response!",
+                        tryCode: "# Initialize the terminal stream\nprint(\"System Initialization Sequence Ready.\")\nprint(\"Core Status: Active\")"
                     },
                     {
-                        title: "Chapter 2: Storing Game Scores with Variables",
-                        content: "To make a game interactive, we need to remember things like the player's name, health, or score. We store these in named boxes called variables!\n\nIn Python, you create a variable by typing its name, an equal sign =, and the value you want to store.\n\nLet's print out our game stats!",
-                        tryCode: "player_name = \"Adventurer\"\nscore = 150\nprint(\"Player:\")\nprint(player_name)\nprint(\"Current Score:\")\nprint(score)"
+                        title: "Chapter 2: Storing Metrics with Variables",
+                        content: "To make applications adaptive, we need to preserve status registers like session keys, port counts, or scores. We store these in named registers called variables!\n\nIn Python, you allocate a variable by typing its name, an equal sign =, and the value you want to load.\n\nLet's print out our system stats!",
+                        tryCode: "host_address = \"127.0.0.1\"\nactive_connections = 150\nprint(\"Host Address:\")\nprint(host_address)\nprint(\"Active Connections:\")\nprint(active_connections)"
                     },
                     {
-                        title: "Chapter 3: Dragon Game Decisions (If/Else)",
-                        content: "Every good game has choices. In our dragon game, if the player chooses the friendly cave, they get gold! Otherwise, they meet a hungry dragon.\n\nWe write these decisions using if and else statements.\n\nLet's test if the player survives!",
-                        tryCode: "cave_choice = 2\nif cave_choice == 1:\n    print(\"You found a treasury of gold! 🏆\")\nelse:\n    print(\"Oh no! A dragon breathes fire! 🐉🔥\")"
+                        title: "Chapter 3: Secure Gate Decisions (If/Else)",
+                        content: "Professional programs branch execution dynamically based on variables. If the connection choice is secure, grant access; otherwise, redirect to safety firewall rules.\n\nWe write these deciders using if and else statements.\n\nLet's test if the node credentials pass!",
+                        tryCode: "auth_choice = 2\nif auth_choice == 1:\n    print(\"Authorization verified. Access granted.\")\nelse:\n    print(\"Authorization failed. Port locked down.\")"
                     }
                 ]
             },
             {
                 id: "automate_boring",
-                title: "Automate the Boring Stuff with Python",
+                title: "Automate Core Workloads with Python",
                 author: "Al Sweigart",
-                description: "A practical guide to programming for total beginners. Learn how to write simple scripts to do tasks that would take hours to do manually.",
-                recommendedAge: "Ages 11-17 (Junior Coders)",
-                coverEmoji: "🤖",
+                description: "A practical guide to scripting for total beginners. Learn how to write secure automation tasks to execute workflows that would take hours to complete manually.",
+                recommendedAge: "Automation Track",
+                iconClass: "fa-solid fa-robot text-indigo-500",
                 chapters: [
                     {
-                        title: "Chapter 1: Python Basics & Automation",
-                        content: "Python can perform arithmetic just like a calculator! E.g. 2 + 3 * 4 evaluates to 14.\n\nTry running basic math expressions to see Python calculate them instantly!",
-                        tryCode: "# Python as a super calculator!\napples = 5\noranges = 3\ntotal_fruit = apples + oranges\print(\"Total fruits calculated by Python:\")\nprint(total_fruit)"
+                        title: "Chapter 1: Python Basics & Loop Automation",
+                        content: "Python can evaluate complex math and automate math calculations instantly. E.g. 2 + 3 * 4 evaluates to 14.\n\nTry running basic expression solvers to see Python calculate them!",
+                        tryCode: "# Solve allocation metrics!\nactive_servers = 5\nbackup_nodes = 3\ntotal_nodes = active_servers + backup_nodes\nprint(\"Total server nodes mapped:\")\nprint(total_nodes)"
                     },
                     {
-                        title: "Chapter 2: Control Flow Loops",
-                        content: "To automate things, you need to execute code blocks multiple times. This is done with loops!\n\nLet's make Python count to 5 automatically!",
-                        tryCode: "print(\"Starting automation task...\")\nfor i in range(5):\n    print(\"🤖 File backup completed!\")"
+                        title: "Chapter 2: Repeated Execution Loops",
+                        content: "To automate routine operations, you repeat code executions. This is done with loops!\n\nLet's make Python execute a backup script 5 times automatically!",
+                        tryCode: "print(\"Starting backup automation task...\")\nfor i in range(5):\n    print(\"Server file backup completed successfully.\")"
                     }
                 ]
             },
             {
                 id: "think_python",
-                title: "Think Python: How to Think Like a Scientist",
+                title: "Think Python: System Architecture Paradigms",
                 author: "Allen B. Downey",
-                description: "An introduction to Python programming that emphasizes design, debugging, and computational thinking.",
-                recommendedAge: "Ages 14+ (Apprentice Engineers)",
-                coverEmoji: "🎓",
+                description: "An introduction to Python programming that emphasizes architectural design, debugging, and computational logic.",
+                recommendedAge: "Core Engineering Track",
+                iconClass: "fa-solid fa-graduation-cap text-violet-500",
                 chapters: [
                     {
-                        title: "Chapter 1: The Way of the Program",
-                        content: "A computer scientist thinks like an engineer, a mathematician, and an artist. The most important skill is problem solving.\n\nVerify Python's type system and execution flow:",
-                        tryCode: "# In Python, variables are dynamically typed\nx = 42\nprint(\"Value of x:\")\nprint(x)\nx = \"Now I'm a string!\"\nprint(x)"
+                        title: "Chapter 1: Computational Logic Flow",
+                        content: "A software architect thinks like a mathematician, an engineer, and an analyst. The primary skill is systemic problem solving.\n\nVerify Python's dynamic typing and execution flow below:",
+                        tryCode: "# In Python, variables are dynamically allocated\nx = 42\nprint(\"Value of register x:\")\nprint(x)\nx = \"Now casting a string memory buffer!\"\nprint(x)"
                     }
                 ]
             }
@@ -796,8 +796,8 @@ print(apples + oranges)</textarea>
         const avatars = [
             {
                 id: "classic",
-                name: "Console Core AI 💻",
-                emoji: "💻",
+                name: "Console Core AI",
+                iconClass: "fa-solid fa-terminal",
                 desc: "Core systemic AI compiler designed for micro-service diagnostics.",
                 startColor: "#8B5CF6",
                 endColor: "#6366F1",
@@ -805,8 +805,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "sparky",
-                name: "Hyper Threads ⚡",
-                emoji: "⚡",
+                name: "Hyper Threads",
+                iconClass: "fa-solid fa-microchip",
                 desc: "Enables parallel processing loops with zero memory bottlenecks!",
                 startColor: "#F59E0B",
                 endColor: "#EF4444",
@@ -814,8 +814,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "glow",
-                name: "Daemon Gateway 🌀",
-                emoji: "🌀",
+                name: "Daemon Gateway",
+                iconClass: "fa-solid fa-circle-nodes",
                 desc: "Reroutes and filters packet structures across standard cloud portals.",
                 startColor: "#EC4899",
                 endColor: "#8B5CF6",
@@ -823,8 +823,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "cosmic",
-                name: "Root Mainframe 👑",
-                emoji: "👑",
+                name: "Root Mainframe",
+                iconClass: "fa-solid fa-server",
                 desc: "Accesses higher root authorization boundaries on cyber networks.",
                 startColor: "#10B981",
                 endColor: "#3B82F6",
@@ -835,61 +835,61 @@ print(apples + oranges)</textarea>
         const badges = [
             {
                 id: "hatchling",
-                title: "Initialize Kernel 💻",
+                title: "Initialize Kernel",
                 description: "You successfully configured your first local developer environment!",
-                iconEmoji: "💻",
-                bgStart: "#4ADE80",
-                bgEnd: "#22C55E",
+                iconClass: "fa-solid fa-terminal",
+                bgStart: "#10B981",
+                bgEnd: "#059669",
                 checkCondition: (xp, streak, questsCount) => true,
                 lockText: ""
             },
             {
                 id: "sandbox",
-                title: "Sandbox Operator 🧪",
+                title: "Sandbox Operator",
                 description: "Unlocked by running custom experiments in the compiler sandbox!",
-                iconEmoji: "🧪",
-                bgStart: "#FBBF24",
-                bgEnd: "#F59E0B",
+                iconClass: "fa-solid fa-flask",
+                bgStart: "#F59E0B",
+                bgEnd: "#D97706",
                 checkCondition: (xp, streak, questsCount) => xp >= 15,
                 lockText: "Run any code in Sandbox (+15 XP)"
             },
             {
                 id: "first_spell",
-                title: "Successful Compile 🛡️",
+                title: "Successful Compile",
                 description: "Successfully compiled and verified your first executable script block!",
-                iconEmoji: "🛡️",
-                bgStart: "#818CF8",
-                bgEnd: "#6366F1",
+                iconClass: "fa-solid fa-shield-halved",
+                bgStart: "#6366F1",
+                bgEnd: "#4F46E5",
                 checkCondition: (xp, streak, questsCount) => questsCount >= 1,
                 lockText: "Complete 1 Quest (+100 XP)"
             },
             {
                 id: "streak_warrior",
-                title: "Reliability Node ⭐",
+                title: "Reliability Node",
                 description: "Demonstrated 100% server uptime and continuous activity for 3+ days!",
-                iconEmoji: "🔥",
-                bgStart: "#F87171",
-                bgEnd: "#EF4444",
+                iconClass: "fa-solid fa-fire",
+                bgStart: "#EF4444",
+                bgEnd: "#DC2626",
                 checkCondition: (xp, streak, questsCount) => streak >= 3,
                 lockText: "Reach a 3-Day Streak"
             },
             {
                 id: "spellslinger",
-                title: "Subnet Architect ⚡",
+                title: "Subnet Architect",
                 description: "Successfully buffered and processed more than 500 total XP points!",
-                iconEmoji: "⚡",
-                bgStart: "#A78BFA",
-                bgEnd: "#8B5CF6",
+                iconClass: "fa-solid fa-network-wired",
+                bgStart: "#8B5CF6",
+                bgEnd: "#7C3AED",
                 checkCondition: (xp, streak, questsCount) => xp >= 500,
                 lockText: "Earn 500 Total XP"
             },
             {
                 id: "archmage",
-                title: "System Chief 👑",
+                title: "System Chief",
                 description: "The ultimate developer accolade! Cleared all 4 core quest modules.",
-                iconEmoji: "👑",
-                bgStart: "#F472B6",
-                bgEnd: "#EC4899",
+                iconClass: "fa-solid fa-crown",
+                bgStart: "#EC4899",
+                bgEnd: "#DB2777",
                 checkCondition: (xp, streak, questsCount) => questsCount >= 4,
                 lockText: "Complete 4 Quests"
             }
@@ -1118,11 +1118,11 @@ print(apples + oranges)</textarea>
 
         // --- METRICS RECOMPILER (XP, Levels, Progress) ---
         function getLevelData(xp) {
-            if (xp < 200) return { level: 1, title: "Core Novice 💻", min: 0, max: 200, motivator: "Initialize core logic! Earn 200 XP to level up into System Engineer! 💻" };
-            if (xp < 500) return { level: 2, title: "System Engineer ⚙️", min: 200, max: 500, motivator: "Excellent optimization! 300 more XP to unlock Automation Specialist! ⚙️" };
-            if (xp < 900) return { level: 3, title: "Automation Specialist 🧠", min: 500, max: 900, motivator: "Code execution is fluid! 400 more XP to become Mainframe Architect! 🧠" };
-            if (xp < 1400) return { level: 4, title: "Mainframe Architect 🚀", min: 900, max: 1400, motivator: "Almost fully compiled! 500 more XP to achieve Devops Lead! 🚀" };
-            return { level: 5, title: "Devops Lead 👑🌌", min: 1400, max: 3000, motivator: "Outstanding performance! You are a Devops Lead! Keep deploying code modules! 👑🌌" };
+            if (xp < 200) return { level: 1, title: "Core Novice", min: 0, max: 200, motivator: "Initialize core logic! Earn 200 XP to level up into System Engineer!" };
+            if (xp < 500) return { level: 2, title: "System Engineer", min: 200, max: 500, motivator: "Excellent optimization! 300 more XP to unlock Automation Specialist!" };
+            if (xp < 900) return { level: 3, title: "Automation Specialist", min: 500, max: 900, motivator: "Code execution is fluid! 400 more XP to become Mainframe Architect!" };
+            if (xp < 1400) return { level: 4, title: "Mainframe Architect", min: 900, max: 1400, motivator: "Almost fully compiled! 500 more XP to achieve Devops Lead!" };
+            return { level: 5, title: "Devops Lead", min: 1400, max: 3000, motivator: "Outstanding performance! You are a Devops Lead! Keep deploying code modules!" };
         }
 
         function addXpPoints(points, reason) {
@@ -1147,12 +1147,12 @@ print(apples + oranges)</textarea>
             const activeAvatar = avatars.find(a => a.id === state.selectedAvatar) || avatars[0];
 
             // Welcome bar
-            document.getElementById("welcome-message").innerText = `Meet ${activeAvatar.name}! 🧙‍♂️`;
+            document.getElementById("welcome-message").innerText = `Meet ${activeAvatar.name}!`;
 
             // Dynamic header avatar
             const avatarBg = document.getElementById("header-avatar-bg");
             avatarBg.style.background = `linear-gradient(135deg, ${activeAvatar.startColor}, ${activeAvatar.endColor})`;
-            avatarBg.innerHTML = `<span class="text-2xl">${activeAvatar.id === 'classic' ? '🐍' : activeAvatar.emoji}</span>`;
+            avatarBg.innerHTML = `<i class="${activeAvatar.iconClass} text-white text-base"></i>`;
 
             // Streak
             document.getElementById("dash-streak").innerText = `${state.streakCount} Days`;
@@ -1206,8 +1206,8 @@ print(apples + oranges)</textarea>
 
                 card.innerHTML = `
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background-color: ${isCompleted ? '#DEF7EC' : '#F3F4F6'}">
-                            ${isCompleted ? '⭐' : q.icon}
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl" style="background-color: ${isCompleted ? '#DEF7EC' : '#F3F4F6'}">
+                            ${isCompleted ? '<i class="fa-solid fa-circle-check text-green-600"></i>' : `<i class="${q.iconClass}"></i>`}
                         </div>
                         <div>
                             <div class="text-[10px] font-black text-kidsPurple uppercase tracking-wider">${q.levelName}</div>
@@ -1216,7 +1216,7 @@ print(apples + oranges)</textarea>
                         </div>
                     </div>
                     <div>
-                        ${isCompleted ? '<span class="bg-kidsGreen text-white text-[10px] font-black px-2.5 py-1 rounded-full">CLEARED</span>' : (isUnlocked ? '<span class="bg-kidsPurple text-white text-[10px] font-black px-2.5 py-1 rounded-full">PLAY</span>' : '🔒')}
+                        ${isCompleted ? '<span class="bg-kidsGreen text-white text-[10px] font-black px-2.5 py-1 rounded-full">CLEARED</span>' : (isUnlocked ? '<span class="bg-kidsPurple text-white text-[10px] font-black px-2.5 py-1 rounded-full">PLAY</span>' : '<i class="fa-solid fa-lock text-slate-400"></i>')}
                     </div>
                 `;
                 container.appendChild(card);
@@ -1229,13 +1229,15 @@ print(apples + oranges)</textarea>
             // Render top Avatar glowing block
             const avatarGlow = document.getElementById("profile-avatar-glow");
             avatarGlow.style.background = `linear-gradient(135deg, ${activeAvatar.startColor}, ${activeAvatar.endColor})`;
-            document.getElementById("profile-avatar-emoji").innerText = activeAvatar.id === 'classic' ? '🐍' : activeAvatar.emoji;
+            document.getElementById("profile-avatar-emoji").innerHTML = `<i class="${activeAvatar.iconClass} text-white text-3xl"></i>`;
             document.getElementById("profile-avatar-title").innerText = activeAvatar.name;
             document.getElementById("profile-avatar-desc").innerText = activeAvatar.desc;
 
             const profileAvatarBadge = document.getElementById("profile-avatar-badge");
-            profileAvatarBadge.innerHTML = activeAvatar.id === 'classic' ? '🔮' : (activeAvatar.id === 'sparky' ? '⚡' : (activeAvatar.id === 'glow' ? '🌀' : '👑'));
+            profileAvatarBadge.innerHTML = `<i class="${activeAvatar.iconClass} text-[10px]"></i>`;
             profileAvatarBadge.style.borderColor = activeAvatar.startColor;
+            profileAvatarBadge.style.backgroundColor = "#F3F4F6";
+            profileAvatarBadge.style.color = activeAvatar.startColor;
 
             // Render Choose Companion Grid
             const chooser = document.getElementById("avatar-chooser-grid");
@@ -1249,10 +1251,10 @@ print(apples + oranges)</textarea>
                 opt.onclick = () => selectCompanionAvatar(av.id);
 
                 opt.innerHTML = `
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-sm" style="background: linear-gradient(135deg, ${av.startColor}, ${av.endColor})">
-                        🐍
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm text-white shadow-sm" style="background: linear-gradient(135deg, ${av.startColor}, ${av.endColor})">
+                        <i class="${av.iconClass}"></i>
                     </div>
-                    <span class="text-[9px] font-bold text-textDark truncate w-full">${av.name.split(" ")[0]}</span>
+                    <span class="text-[9px] font-bold text-textDark truncate w-full">${av.name}</span>
                 `;
                 chooser.appendChild(opt);
             });
@@ -1278,7 +1280,7 @@ print(apples + oranges)</textarea>
                 dCell.innerHTML = `
                     <span class="text-[10px] text-textLight font-bold">${day}</span>
                     <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs ${isStreakActive ? 'bg-kidsOrange text-white' : 'bg-gray-100 text-gray-300'}">
-                        ${isStreakActive ? '✓' : '💤'}
+                        ${isStreakActive ? '<i class="fa-solid fa-circle-check text-white"></i>' : '<i class="fa-solid fa-moon"></i>'}
                     </div>
                 `;
                 calendar.appendChild(dCell);
@@ -1312,18 +1314,18 @@ print(apples + oranges)</textarea>
 
                 const div = document.createElement("div");
                 div.className = `p-4 rounded-2xl border-2 flex items-center gap-4 transition ${
-                    isUnlocked ? "bg-white border-kidsBorder" : "bg-gray-100 border-gray-200 opacity-60"
+                    isUnlocked ? "bg-white border-kidsBorder shadow-sm" : "bg-gray-100 border-gray-200 opacity-60"
                 }`;
 
                 div.innerHTML = `
-                    <div class="w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow shadow-inner" style="background: ${isUnlocked ? `linear-gradient(135deg, ${b.bgStart}, ${b.bgEnd})` : 'linear-gradient(135deg, #E5E7EB, #9CA3AF)'}">
-                        ${isUnlocked ? b.iconEmoji : '🔒'}
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center text-xl text-white shadow shadow-inner" style="background: ${isUnlocked ? `linear-gradient(135deg, ${b.bgStart}, ${b.bgEnd})` : 'linear-gradient(135deg, #E5E7EB, #9CA3AF)'}">
+                        ${isUnlocked ? `<i class="${b.iconClass}"></i>` : '<i class="fa-solid fa-lock text-slate-500"></i>'}
                     </div>
                     <div class="flex-1">
                         <h4 class="font-extrabold text-sm ${isUnlocked ? 'text-textDark' : 'text-textLight'}">${b.title}</h4>
                         <p class="text-xs text-textLight">${isUnlocked ? b.description : `Unlocks when: ${b.lockText}`}</p>
                     </div>
-                    ${isUnlocked ? '<div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-kidsGreen font-bold">✓</div>' : ''}
+                    ${isUnlocked ? '<div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-kidsGreen font-bold"><i class="fa-solid fa-check text-xs"></i></div>' : ''}
                 `;
                 container.appendChild(div);
             });
@@ -1338,7 +1340,7 @@ print(apples + oranges)</textarea>
             const q = quests[index];
             document.getElementById("quest-level-name").innerText = q.levelName;
             document.getElementById("quest-title").innerText = q.title;
-            document.getElementById("quest-header-icon").innerText = q.icon;
+            document.getElementById("quest-header-icon").innerHTML = `<i class="${q.iconClass} text-kidsPurple text-2xl"></i>`;
             document.getElementById("quest-story").innerText = q.story;
             document.getElementById("quest-instruction").innerText = q.instruction;
             document.getElementById("quest-concept-title").innerText = q.conceptTitle;
@@ -1346,7 +1348,7 @@ print(apples + oranges)</textarea>
 
             // Load saved/starting code
             document.getElementById("quest-editor").value = q.startingCode;
-            document.getElementById("quest-console").innerText = "No spells casted yet! Press Run Spell below...";
+            document.getElementById("quest-console").innerText = "No scripts executed yet! Press Run Code below...";
             document.getElementById("quest-status-indicator").innerText = "Idle";
             document.getElementById("quest-status-indicator").className = "text-kidsOrange";
 
@@ -1411,11 +1413,9 @@ print(apples + oranges)</textarea>
             }, 600);
         }
 
-        function simulatePythonCode(code, targetKeyword, targetEmoji) {
-            // Very high-fidelity rule-based evaluator that parses input
+        function simulatePythonCode(code, targetKeyword, targetValue) {
             let outputLines = [];
             let lines = code.split("\n");
-
             let hasSyntaxError = false;
             let currentVariable = null;
             let currentVariableValue = null;
@@ -1424,7 +1424,7 @@ print(apples + oranges)</textarea>
                 line = line.trim();
                 if (!line || line.startsWith("#")) continue;
 
-                // Handle basic Variable Assignment e.g. toy = "🎈"
+                // Variable Assignment
                 if (line.includes("=")) {
                     let parts = line.split("=");
                     if (parts.length === 2) {
@@ -1434,89 +1434,74 @@ print(apples + oranges)</textarea>
                     continue;
                 }
 
-                // Handle Print Function
+                // Print
                 if (line.startsWith("print(") && line.endsWith(")")) {
                     let content = line.substring(6, line.length - 1).trim();
-
-                    // If it prints our assigned variable
                     if (currentVariable && content === currentVariable) {
                         outputLines.push(currentVariableValue);
-                    } else if (content.startsWith('"') && content.endsWith('"')) {
-                        // strip quotes
-                        outputLines.push(content.substring(1, content.length - 1));
-                    } else if (content.startsWith("'") && content.endsWith("'")) {
+                    } else if ((content.startsWith('"') && content.endsWith('"')) || (content.startsWith("'") && content.endsWith("'"))) {
                         outputLines.push(content.substring(1, content.length - 1));
                     } else {
-                        // Could be simple arithmetic
-                        try {
-                            let val = eval(content);
-                            outputLines.push(val);
-                        } catch(e) {
-                            outputLines.push(`NameError: name '${content}' is not defined`);
-                            hasSyntaxError = true;
-                        }
+                        outputLines.push(content);
                     }
                     continue;
                 }
 
-                // Handle simple count loops
+                // For Loops
                 if (line.startsWith("for ") && line.endsWith(":")) {
                     if (line.includes("range(3)")) {
-                        // Loop repeats print command in block
-                        // Check if print exists in blocks below
-                        let printContent = "";
+                        let hasPrint = false;
+                        let valToPrint = targetValue || "[PORT_SECURED]";
                         for (let line2 of lines) {
-                            if (line2.includes("print(") && (line2.includes("⭐") || line2.includes('"⭐"'))) {
-                                printContent = "⭐";
+                            if (line2.trim().startsWith("print(") && line2.includes(valToPrint)) {
+                                hasPrint = true;
                             }
                         }
-                        if (printContent) {
-                            outputLines.push(printContent);
-                            outputLines.push(printContent);
-                            outputLines.push(printContent);
+                        if (hasPrint) {
+                            outputLines.push(valToPrint);
+                            outputLines.push(valToPrint);
+                            outputLines.push(valToPrint);
                         } else {
-                            outputLines.push("⭐\n⭐\n⭐");
-                        }
-                    } else if (line.includes("range(")) {
-                        // extract loop count
-                        let match = line.match(/range\((\d+)\)/);
-                        if (match) {
-                            let limit = parseInt(match[1]);
-                            for (let k = 0; k < limit; k++) {
-                                outputLines.push("🤖 File backup completed!");
-                            }
+                            outputLines.push("[Loop Initialized]");
                         }
                     }
-                    break; // stop evaluating lines inside simulator mock loop
+                    break;
                 }
 
-                // Handle basic If Statements
+                // If Conditions
                 if (line.startsWith("if ")) {
-                    // Check logic condition score > 5
-                    if (line.includes("score > 5") || code.includes("score = 10")) {
-                        // print trophy
-                        outputLines.push("🏆");
+                    if (line.includes("power > 5") || code.includes("power = 10")) {
+                        let hasPrint = false;
+                        let valToPrint = targetValue || "BYPASS_NODE";
+                        for (let line2 of lines) {
+                            if (line2.trim().startsWith("print(") && line2.includes(valToPrint)) {
+                                hasPrint = true;
+                            }
+                        }
+                        if (hasPrint) {
+                            outputLines.push(valToPrint);
+                        } else {
+                            outputLines.push("Bypassing...");
+                        }
                     } else {
-                        outputLines.push("🌧️");
+                        outputLines.push("CRITICAL_ALERT");
                     }
                     break;
                 }
             }
 
             let fullOutput = outputLines.join("\n");
-
-            // Verify Goal Condition
             let isSuccessful = false;
-            const normalizedCode = code.replace(/\s+/g, '');
+            let normalizedCode = code.replace(/\s+/g, '');
 
-            if (targetKeyword === "print") {
-                isSuccessful = code.includes("print") && code.includes(targetEmoji);
-            } else if (targetKeyword === "print(toy)" || targetKeyword === "print(token)") {
-                isSuccessful = (normalizedCode.includes('toy="🎈"') || normalizedCode.includes('token="🔑"')) && (normalizedCode.includes('print(toy)') || normalizedCode.includes('print(token)') || normalizedCode.includes("print('🎈')") || normalizedCode.includes('print("🎈")') || normalizedCode.includes("print('🔑')") || normalizedCode.includes('print("🔑")'));
-            } else if (targetKeyword === "range(3)") {
-                isSuccessful = code.includes("range(3)") && code.includes("print") && (code.includes("⭐") || fullOutput.includes("⭐") || code.includes("🛡️") || fullOutput.includes("🛡️"));
-            } else if (targetKeyword === "if") {
-                isSuccessful = code.includes("if") && (code.includes("🏆") || fullOutput.includes("🏆") || code.includes("🔓") || fullOutput.includes("🔓"));
+            if (targetValue === "SYSTEM_ONLINE") {
+                isSuccessful = code.includes("print") && code.includes("SYSTEM_ONLINE");
+            } else if (targetValue === "ACCESS_TOKEN") {
+                isSuccessful = (normalizedCode.includes('token="ACCESS_TOKEN"') || normalizedCode.includes("token='ACCESS_TOKEN'")) && normalizedCode.includes("print(token)");
+            } else if (targetValue === "[PORT_SECURED]") {
+                isSuccessful = code.includes("range(3)") && code.includes("print") && code.includes("[PORT_SECURED]");
+            } else if (targetValue === "BYPASS_NODE") {
+                isSuccessful = code.includes("if") && code.includes("BYPASS_NODE") && code.includes("power");
             }
 
             if (hasSyntaxError) {
@@ -1524,11 +1509,11 @@ print(apples + oranges)</textarea>
             }
 
             if (isSuccessful) {
-                return { success: true, output: fullOutput || targetEmoji };
+                return { success: true, output: fullOutput || targetValue };
             } else {
                 return {
                     success: false,
-                    output: fullOutput ? `${fullOutput}\n\n⚠️ Script executed but output did not match the validation criteria! Try again to output the target character/data.` : "⚠️ Try writing valid Python executable scripts!"
+                    output: fullOutput ? `${fullOutput}\n\n⚠️ Script executed but output did not match the validation criteria! Try again to output the target value.` : "⚠️ Try writing valid Python executable scripts!"
                 };
             }
         }
@@ -1647,7 +1632,7 @@ print(apples + oranges)</textarea>
 
                 card.innerHTML = `
                     <div class="space-y-2">
-                        <div class="text-4xl">${b.coverEmoji}</div>
+                        <div class="text-3xl"><i class="${b.iconClass}"></i></div>
                         <h3 class="font-extrabold text-base text-textDark">${b.title}</h3>
                         <p class="text-xs text-textLight">${b.description}</p>
                     </div>
