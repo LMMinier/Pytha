@@ -86,7 +86,7 @@ fun HomeScreen(
                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img_home_banner),
+                    painter = painterResource(id = R.drawable.img_cyber_home_banner),
                     contentDescription = "Python Quest Coding Adventure",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
@@ -118,7 +118,7 @@ fun HomeScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.img_monty_avatar),
+                            painter = painterResource(id = R.drawable.img_cyber_daemon),
                             contentDescription = currentAvatar.name,
                             modifier = Modifier
                                 .fillMaxSize()
@@ -334,11 +334,11 @@ fun HomeScreen(
                     // Fun motivator message
                     Text(
                         text = when (level) {
-                            1 -> "Great start! Earn 200 XP to level up into a Snakelet Wizard! 🐍"
-                            2 -> "Wow, you're learning fast! 300 more XP to unlock Spellslinger! ⚡"
-                            3 -> "Magic is flowing! 400 more XP to become Mage of Code! 🔮"
-                            4 -> "Almost there! 500 more XP to achieve Python Archmage! 👑"
-                            else -> "Incredible! You are a Python Archmage! Keep casting code spells! 👑⭐"
+                            1 -> "Initialize core logic! Earn 200 XP to level up into System Engineer! 💻"
+                            2 -> "Excellent optimization! 300 more XP to unlock Automation Specialist! ⚙️"
+                            3 -> "Code execution is fluid! 400 more XP to become Mainframe Architect! 🧠"
+                            4 -> "Almost fully compiled! 500 more XP to achieve Devops Lead! 🚀"
+                            else -> "Outstanding performance! You are a Devops Lead! Keep deploying code modules! 👑🌌"
                         },
                         fontSize = 12.sp,
                         color = TextLight,

@@ -7,7 +7,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val LightColorScheme = lightColorScheme(
+private val DarkCyberColorScheme = darkColorScheme(
     primary = Primary,
     secondary = Secondary,
     tertiary = Tertiary,
@@ -22,12 +22,12 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun MyApplicationTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false, // Keep colors cohesive across devices for kids
+    darkTheme: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
-        colorScheme = LightColorScheme,
+        colorScheme = DarkCyberColorScheme,
         typography = Typography,
         content = content
     )

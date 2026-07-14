@@ -45,7 +45,7 @@ object PythonInterpreter {
                 success = false,
                 outputs = outputs,
                 finalVariables = variables,
-                errorMessage = "Oops! Monty got a bit tangled up. Check your code lines!"
+                errorMessage = "SyntaxError: Compilation error. Verify indentation and operators."
             )
         }
     }
@@ -237,7 +237,7 @@ object PythonInterpreter {
                     val expression = parts[1].trim()
                     
                     if (!isValidIdentifier(varName)) {
-                        throw InterpreterException(i + 1, "'$varName' is not a valid name for a secret toy box! Use letters only.")
+                        throw InterpreterException(i + 1, "NameError: '$varName' is not a valid identifier name. Use letters or underscores only.")
                     }
                     
                     val value = evaluateExpression(expression, variables, i + 1)
@@ -246,7 +246,7 @@ object PythonInterpreter {
                 }
                 
                 else -> {
-                    throw InterpreterException(i + 1, "Monty is confused by this line: '$line'. Did you spell it correctly?")
+                    throw InterpreterException(i + 1, "SyntaxError: Unexpected instruction block: '$line'. Verify Python syntax conventions.")
                 }
             }
         }
@@ -314,7 +314,7 @@ object PythonInterpreter {
             }
         }
         
-        throw InterpreterException(lineNum, "Hmm, Monty doesn't know what '$trimmed' is! Did you define it first?")
+        throw InterpreterException(lineNum, "NameError: name '$trimmed' is not defined. Ensure variables are declared prior to execution.")
     }
 
     private fun evaluateIntExpression(expr: String, variables: Map<String, Any>, lineNum: Int): Int {

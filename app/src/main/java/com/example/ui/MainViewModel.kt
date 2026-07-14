@@ -149,7 +149,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     
     // Playground Code
     private val _playgroundCode = MutableStateFlow(
-        "# Welcome to Monty's Playground! 🐍\n# Write any code you like here!\n\ntoy_box = \"🦄\"\nprint(toy_box)\n\nfor i in range(5):\n    print(\"🎈\")"
+        "# Welcome to Cyber Terminal IDE!\n# Write and execute Python scripts below:\n\naccess_token = \"🛡️\"\nprint(access_token)\n\nfor i in range(5):\n    print(\"⚡\")"
     )
     val playgroundCode = _playgroundCode.asStateFlow()
 
@@ -253,35 +253,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val apiKey = com.example.BuildConfig.GEMINI_API_KEY
                 if (apiKey.isEmpty() || apiKey == "MY_GEMINI_API_KEY") {
-                    _montyAdvice.value = "Oops! Monty is missing his AI thinking cap (API key). Instruct your teacher to configure the API key in the AI Studio Secrets panel! 🐍🔑"
+                    _montyAdvice.value = "System Error: Missing API configuration token (GEMINI_API_KEY). Ensure credentials are fully provisioned within your environment settings panel."
                     _isMontyLoading.value = false
                     return@launch
                 }
                 
-                val tier = _selectedAgeTier.value ?: "8_10"
-                val tierInstruction = when (tier) {
-                    "8_10" -> """
-                        Your audience is 8 to 10 years old (Young Wizards). Speak with high energy, extreme enthusiasm, lots of child-friendly emojis, and sweet encouragement.
-                        Avoid complex computer terms entirely. Use magic analogies, like comparing "variables" to "toy boxes" or "print()" to a "magic summoning spell". Keep concepts highly gamified and playful.
-                    """.trimIndent()
-                    "11_13" -> """
-                        Your audience is 11 to 13 years old (Junior Coders). Keep your tone fun, enthusiastic, gamified, and modern. 
-                        Use game design or app builder analogies, like comparing "variables" to "labeled game lockers/inventories" or "loops" to "automated machines/repeat levers". Keep it engaging and slightly mature but very friendly.
-                    """.trimIndent()
-                    "14_17" -> """
-                        Your audience is 14 to 17 years old (Apprentice Engineers). Speak with a warm, encouraging developer-mentor persona.
-                        Explain real programming logic clearly. Use clean, real-world development context (e.g. databases, user input, simple algorithms) instead of fantasy or children's toys, but keep it accessible, friendly, and practical.
-                    """.trimIndent()
-                    else -> """
-                        Your audience is 18+ (Curious Minds / Lifelong Learners). Speak with a friendly, intelligent, clear, and professional developer tone.
-                        Explain concepts with structured clarity and programming insights. Focus on helpful Python standards, readability, and logic flow, avoiding childish words while remaining incredibly encouraging and easy to understand.
-                    """.trimIndent()
-                }
-
                 val prompt = """
-                    You are Monty, a cute, extremely friendly, and cheerful Python snake mascot who teaches coding in Python! 🐍
+                    You are Cyber Terminal AI, a highly advanced developer compiler assistant! 💻
                     
-                    $tierInstruction
+                    Explain concepts with structured clarity, system level insights, and friendly developer tone. Focus on helpful Python standards, readability, and logic flow, avoiding childish words while remaining incredibly encouraging and easy to understand.
                     
                     Here is the learner's Python code they ran:
                     ```python
@@ -292,9 +272,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     
                     Please review their code:
                     1. Keep your reply short (under 4 paragraphs).
-                    2. Use a fun, loving, and encouraging tone with relevant emojis.
-                    3. If their code has a syntax error or didn't pass the level, gently show them why with a tailored analogy, and give a tiny hint to fix it.
-                    4. If their code is correct, shower them with praise and celebrate with starry, happy emojis!
+                    2. Use a professional, encouraging developer tone with code styling tips.
+                    3. If their code has a syntax error or didn't pass the level, gently show them why, and give a clear tip to fix it.
+                    4. If their code is correct, celebrate with positive terminal-style output!
                 """.trimIndent()
                 
                 val request = GenerateContentRequest(
@@ -303,10 +283,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 
                 val response = GeminiClient.service.generateContent(apiKey, request)
                 val advice = response.candidates?.firstOrNull()?.content?.parts?.firstOrNull()?.text
-                    ?: "Monty is a little sleepy right now. Try asking him again in a second! 🐍💤"
+                    ?: "System Daemon is busy compiling resources. Please try again in a moment."
                 _montyAdvice.value = advice
             } catch (e: Exception) {
-                _montyAdvice.value = "Oh no! Monty's internet mail got lost in the jungle! 🌴 Let's check our internet connection and try again."
+                _montyAdvice.value = "Network Connection Timeout: Mainframe lost contact with standard secure port. Please check your network adapters and try again."
             } finally {
                 _isMontyLoading.value = false
             }

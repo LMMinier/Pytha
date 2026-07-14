@@ -1,6 +1,6 @@
 {
   "name": "Python Quest",
-  "description": "An interactive, visual Python coding companion designed to make learning code easy and fun for everyone.",
+  "description": "An interactive, sleek Python coding companion terminal designed for adult beginner coders and enterprise learners.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

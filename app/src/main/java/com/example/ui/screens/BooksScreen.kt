@@ -156,10 +156,10 @@ fun BookshelfView(
     onSelectBook: (Book) -> Unit
 ) {
     val tierFriendlyName = when (selectedTier) {
-        "8_10" -> "Young Wizard (Ages 8-10)"
-        "11_13" -> "Junior Coder (Ages 11-13)"
-        "14_17" -> "Apprentice Engineer (Ages 14-17)"
-        else -> "Curious Mind (Ages 18+)"
+        "8_10" -> "Cyberpunk Novice (Shell Access)"
+        "11_13" -> "Scripting Apprentice (Automation Specialist)"
+        "14_17" -> "AI Apprentice (Neural Net Developer)"
+        else -> "Mainframe Architect (System Engineer)"
     }
 
     LazyColumn(

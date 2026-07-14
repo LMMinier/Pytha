@@ -288,7 +288,7 @@ fun PythonExplorerScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.img_monty_avatar),
+                            painter = painterResource(id = R.drawable.img_cyber_daemon),
                             contentDescription = currentAvatar.name,
                             modifier = Modifier
                                 .fillMaxSize()

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Quest: Code Wizard Academy</title>
+    <title>Python Quest: Cyber Terminal</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,16 +11,16 @@
             theme: {
                 extend: {
                     colors: {
-                        kidsPurple: '#8B5CF6',
-                        kidsOrange: '#F59E0B',
-                        kidsGreen: '#22C55E',
-                        kidsBg: '#F5F3FF',
-                        kidsBorder: '#E5E7EB',
-                        textDark: '#1F2937',
-                        textLight: '#4B5563'
+                        kidsPurple: '#9D4EDD', // Neon Violet
+                        kidsOrange: '#FF2D55', // Neon Pink/Orange
+                        kidsGreen: '#00F5D4',  // Neon Cyber Green
+                        kidsBg: '#0C091A',     // Dark Midnight
+                        kidsBorder: '#2C2254', // Deep Indigo Border
+                        textDark: '#F1EEFD',   // Bright Text
+                        textLight: '#9F93C9'   // Soft Purple-Grey
                     },
                     fontFamily: {
-                        comic: ['"Comic Sans MS"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', '"Share Tech Mono"', 'monospace'],
                     }
                 }
             }
@@ -28,16 +28,56 @@
     </script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Phaser JS Game Library -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Share+Tech+Mono&display=swap');
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #F5F3FF;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0C091A;
+            color: #F1EEFD;
         }
         h1, h2, h3, .font-fredoka {
-            font-family: 'Fredoka One', cursive;
+            font-family: 'Share Tech Mono', monospace;
         }
-        /* Sparkle float animation */
+        /* Theme overrides for custom components and Tailwind defaults */
+        .bg-white {
+            background-color: #140E2D !important;
+            color: #F1EEFD !important;
+        }
+        .bg-kidsBg {
+            background-color: #0C091A !important;
+        }
+        .text-textDark {
+            color: #F1EEFD !important;
+        }
+        .text-textLight {
+            color: #9F93C9 !important;
+        }
+        .border-kidsBorder {
+            border-color: #2C2254 !important;
+        }
+        .bg-violet-50, .bg-violet-100, .bg-indigo-50, .bg-purple-100 {
+            background-color: rgba(157, 78, 221, 0.12) !important;
+            color: #F1EEFD !important;
+        }
+        .bg-amber-50, .bg-orange-100, .bg-orange-50, .bg-pink-100, .bg-amber-100 {
+            background-color: rgba(255, 45, 85, 0.12) !important;
+            color: #F1EEFD !important;
+        }
+        .text-indigo-900, .text-indigo-950, .text-violet-950, .text-amber-900 {
+            color: #ECE6FF !important;
+        }
+        .border-kidsPurple {
+            border-color: #9D4EDD !important;
+        }
+        /* Glow animations */
+        .neon-glow-purple {
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+        }
+        .neon-glow-green {
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+        }
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
@@ -57,42 +97,42 @@
     <!-- App Container -->
     <div id="app" class="min-h-screen flex flex-col">
 
-        <!-- --- ONBOARDING / AGE SELECTION --- -->
+        <!-- --- ONBOARDING / SPECIALIZATION TRACK --- -->
         <div id="screen-onboarding" class="flex-1 flex flex-col items-center justify-center p-6 max-w-lg mx-auto">
-            <div class="bg-white rounded-3xl border-4 border-kidsBorder shadow-xl p-8 text-center space-y-6 w-full transform transition duration-500 scale-100">
+            <div class="bg-slate-900/90 rounded-3xl border-4 border-kidsBorder neon-glow-purple shadow-xl p-8 text-center space-y-6 w-full transform transition duration-500 scale-100">
                 <div class="relative w-40 h-40 mx-auto">
                     <!-- Wizard Avatar Frame -->
-                    <div class="w-full h-full rounded-full bg-gradient-to-tr from-kidsPurple to-indigo-500 flex items-center justify-center shadow-lg border-4 border-white animate-bounce">
-                        <span class="text-7xl">🧙‍♂️</span>
+                    <div class="w-full h-full rounded-full bg-gradient-to-tr from-kidsPurple to-indigo-500 flex items-center justify-center shadow-lg border-4 border-kidsBorder animate-bounce">
+                        <span class="text-7xl">💻</span>
                     </div>
-                    <div class="absolute -bottom-2 -right-2 bg-yellow-300 border-2 border-white rounded-full p-2 text-2xl shadow">🐍</div>
+                    <div class="absolute -bottom-2 -right-2 bg-kidsGreen border-2 border-slate-950 rounded-full p-2 text-xl shadow">🐍</div>
                 </div>
 
                 <div>
-                    <h1 class="text-3xl text-kidsPurple mb-2 tracking-wide">PYTHON QUEST</h1>
-                    <p class="text-textLight text-sm font-semibold">Step into the Magic Code Academy! Select your wizard training tier to begin:</p>
+                    <h1 class="text-3xl text-kidsPurple font-black mb-2 tracking-widest">PYTHON QUEST</h1>
+                    <p class="text-textLight text-sm font-semibold">Initialize Access Protocol: Select your specialization track to begin:</p>
                 </div>
 
                 <div class="space-y-4">
                     <!-- Explorer tier -->
-                    <button onclick="selectAgeTier('5-7')" class="w-full p-4 rounded-2xl border-2 border-kidsBorder hover:border-kidsPurple bg-violet-50 hover:bg-violet-100 flex items-center gap-4 transition text-left group">
-                        <div class="bg-kidsPurple text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition">🐣</div>
+                    <button onclick="selectAgeTier('5-7')" class="w-full p-4 rounded-2xl border-2 border-kidsBorder hover:border-kidsGreen bg-slate-950/50 hover:bg-slate-950 flex items-center gap-4 transition text-left group">
+                        <div class="bg-kidsPurple text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition">🛡️</div>
                         <div>
-                            <div class="font-bold text-textDark text-base">Ages 5-7: Code Explorer</div>
-                            <div class="text-xs text-textLight">Picture blocks, friendly voices, and simple animal magic!</div>
+                            <div class="font-bold text-textDark text-base font-fredoka">Cyberpunk Novice</div>
+                            <div class="text-xs text-textLight">No prior experience. Intuitive visual guides, fundamental logic gates!</div>
                         </div>
                     </button>
 
                     <!-- Wizard tier -->
-                    <button onclick="selectAgeTier('8-11')" class="w-full p-4 rounded-2xl border-2 border-kidsBorder hover:border-kidsOrange bg-amber-50 hover:bg-amber-100 flex items-center gap-4 transition text-left group">
-                        <div class="bg-kidsOrange text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition">🔮</div>
+                    <button onclick="selectAgeTier('8-11')" class="w-full p-4 rounded-2xl border-2 border-kidsBorder hover:border-kidsOrange bg-slate-950/50 hover:bg-slate-950 flex items-center gap-4 transition text-left group">
+                        <div class="bg-kidsOrange text-white text-2xl w-12 h-12 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition">⚙️</div>
                         <div>
-                            <div class="font-bold text-textDark text-base">Ages 8-11: Wizard Sage</div>
-                            <div class="text-xs text-textLight">Full coding editor, complex algorithms, and spell structures!</div>
+                            <div class="font-bold text-textDark text-base font-fredoka">Mainframe Architect</div>
+                            <div class="text-xs text-textLight">Full code IDE, automation scripts, loop buffers, and active conditions!</div>
                         </div>
                     </button>
                 </div>
-                <div class="text-[10px] text-textLight opacity-60">Created dynamically matching Android Code Wizard specifications.</div>
+                <div class="text-[10px] text-textLight opacity-60 font-mono">AUTHORIZED ACCESS PROTOCOL // AGE 18+ SPECIFICATION</div>
             </div>
         </div>
 
@@ -109,9 +149,9 @@
                         <div class="absolute -bottom-1 -right-1 bg-white rounded-full w-5 h-5 flex items-center justify-center border text-[10px] shadow">👤</div>
                     </div>
                     <div>
-                        <div class="text-xs font-bold text-kidsPurple">CODE WIZARD ACADEMY</div>
+                        <div class="text-xs font-bold text-kidsPurple">CYBER SYSTEM TERMINAL</div>
                         <h2 class="text-lg font-black text-textDark leading-tight flex items-center gap-1">
-                            Hi, Future Coder! 👋
+                            System Access Initialized 👋
                         </h2>
                     </div>
                 </div>
@@ -130,21 +170,21 @@
                 <div class="bg-violet-600 rounded-3xl p-6 text-white flex flex-col md:flex-row items-center gap-6 shadow-lg relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full translate-x-10 -translate-y-10"></div>
                     <div class="text-center md:text-left space-y-2 flex-1">
-                        <span class="bg-kidsOrange text-textDark text-[10px] font-black px-3 py-1 rounded-full uppercase">Companion Summoned</span>
-                        <h1 id="welcome-message" class="text-2xl font-bold leading-tight">Meet Classic Monty! 🧙‍♂️</h1>
-                        <p class="text-violet-100 text-sm">Learn Python magic spells, run sandboxed tests, and unlock elite certificates!</p>
+                        <span class="bg-kidsOrange text-textDark text-[10px] font-black px-3 py-1 rounded-full uppercase">Daemon Connected</span>
+                        <h1 id="welcome-message" class="text-2xl font-bold leading-tight">System AI Daemon Active! 💻</h1>
+                        <p class="text-violet-100 text-sm">Run dynamic Python automated tasks, compile files in the sandbox, and unlock elite micro-credentials!</p>
                         <button onclick="navigateTo('profile')" class="mt-2 text-xs bg-white text-kidsPurple font-extrabold px-4 py-2 rounded-xl shadow hover:bg-violet-50 transition inline-flex items-center gap-1">
-                            View Explorer Profile 👤
+                            View Operator Profile 👤
                         </button>
                     </div>
-                    <div class="text-7xl md:mr-4 animate-pulse">🐍</div>
+                    <div class="text-7xl md:mr-4 animate-pulse">💻</div>
                 </div>
 
                 <!-- Wizard Progress Summary Card -->
                 <div onclick="navigateTo('profile')" class="cursor-pointer bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow hover:shadow-md transition space-y-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-lg font-black text-textDark flex items-center gap-1">Wizard Progress 🏆</h3>
+                            <h3 class="text-lg font-black text-textDark flex items-center gap-1">Terminal Compile Progress 🏆</h3>
                             <div id="dash-quest-counts" class="text-xs text-textLight">0 of 4 Quests Cleared!</div>
                         </div>
                         <div class="bg-violet-100 text-kidsPurple text-xs font-black px-3 py-1 rounded-xl uppercase tracking-wide" id="dash-level-pill">LEVEL 1</div>
@@ -159,7 +199,7 @@
                         <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl">✨</div>
                         <div class="flex-1">
                             <div class="flex justify-between items-center text-xs font-black mb-1">
-                                <span id="dash-level-title" class="text-textDark">Python Hatchling 🥚</span>
+                                <span id="dash-level-title" class="text-textDark">Core Novice 💻</span>
                                 <span id="dash-xp-display" class="text-kidsOrange">0 / 200 XP</span>
                             </div>
                             <!-- XP ProgressBar -->
@@ -168,7 +208,34 @@
                             </div>
                         </div>
                     </div>
-                    <div id="dash-motivator" class="text-xs text-textLight leading-snug">Great start! Earn 200 XP to level up into a Snakelet Wizard! 🐍</div>
+                    <div id="dash-motivator" class="text-xs text-textLight leading-snug">Initialize core logic! Earn 200 XP to level up into a System Engineer! 💻</div>
+                </div>
+
+                <!-- --- PHASER CYBER ARCADE SIMULATOR --- -->
+                <div class="bg-slate-900 border-2 border-kidsBorder rounded-3xl p-6 shadow-lg space-y-4 neon-glow-purple">
+                    <div class="flex items-center justify-between border-b border-kidsBorder pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl">🎮</span>
+                            <h3 class="text-lg font-black text-textDark tracking-wider">CYBER TERMINAL ARCADE</h3>
+                        </div>
+                        <span class="bg-kidsGreen text-slate-950 font-mono text-[10px] px-2 py-0.5 rounded font-black tracking-wide">PHASER ENGINE LIVE</span>
+                    </div>
+                    <p class="text-xs text-textLight leading-relaxed">
+                        Control the <span class="text-kidsGreen font-bold">Cyber-Collector</span> block with your keyboard arrows (or the visual touch buttons below) to collect neon code tokens! Collect <span class="text-kidsOrange font-bold">3 code tokens</span> to trigger a mainframe bypass and unlock a direct <span class="text-kidsGreen font-bold">+100 XP</span> boost!
+                    </p>
+                    
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <!-- Phaser game canvas mounting point -->
+                        <div id="phaser-game-container" class="border-2 border-kidsBorder rounded-2xl overflow-hidden bg-[#070512] neon-glow-purple w-full max-w-[450px] h-[220px]"></div>
+                        
+                        <!-- Directional buttons for touch screen / mouse input -->
+                        <div class="flex gap-2 justify-center">
+                            <button onclick="sendArcadeMove('left')" class="px-4 py-2 bg-slate-950 hover:bg-slate-900 text-kidsPurple font-mono text-xs font-bold rounded-xl border border-kidsBorder transition"><i class="fa-solid fa-arrow-left"></i> Left</button>
+                            <button onclick="sendArcadeMove('up')" class="px-4 py-2 bg-slate-950 hover:bg-slate-900 text-kidsPurple font-mono text-xs font-bold rounded-xl border border-kidsBorder transition"><i class="fa-solid fa-arrow-up"></i> Up</button>
+                            <button onclick="sendArcadeMove('down')" class="px-4 py-2 bg-slate-950 hover:bg-slate-900 text-kidsPurple font-mono text-xs font-bold rounded-xl border border-kidsBorder transition"><i class="fa-solid fa-arrow-down"></i> Down</button>
+                            <button onclick="sendArcadeMove('right')" class="px-4 py-2 bg-slate-950 hover:bg-slate-900 text-kidsPurple font-mono text-xs font-bold rounded-xl border border-kidsBorder transition"><i class="fa-solid fa-arrow-right"></i> Right</button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Playable Sections Grid -->
@@ -177,7 +244,7 @@
                     <!-- LEFT: Quests List -->
                     <div class="space-y-4">
                         <h3 class="text-lg font-bold text-textDark flex items-center gap-2 px-1">
-                            <span class="text-kidsPurple">🔮</span> Magic Code Quests
+                            <span class="text-kidsPurple">🖥️</span> Cyber Code Quests
                         </h3>
                         <div class="space-y-3" id="quests-list-container">
                             <!-- Quests are rendered dynamically by JS -->
@@ -233,8 +300,8 @@
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <div>
-                    <div class="text-xs font-bold text-kidsPurple">WIZARD REGISTRY 🌟</div>
-                    <h2 class="text-lg font-black text-textDark leading-tight">Python Explorer Profile</h2>
+                    <div class="text-xs font-bold text-kidsPurple">COMPILER REGISTRY 🌟</div>
+                    <h2 class="text-lg font-black text-textDark leading-tight">Operator Terminal Profile</h2>
                 </div>
             </header>
 
@@ -244,19 +311,19 @@
                 <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow text-center space-y-6">
                     <div class="relative w-36 h-36 mx-auto">
                         <div id="profile-avatar-glow" class="w-full h-full rounded-full bg-gradient-to-tr from-kidsPurple to-indigo-500 flex items-center justify-center border-4 border-white shadow-lg relative overflow-hidden">
-                            <span id="profile-avatar-emoji" class="text-7xl select-none">🐍</span>
+                            <span id="profile-avatar-emoji" class="text-7xl select-none">💻</span>
                         </div>
-                        <div id="profile-avatar-badge" class="absolute -bottom-1 -right-1 bg-white border-2 border-kidsPurple rounded-full w-10 h-10 flex items-center justify-center text-xl shadow">🔮</div>
+                        <div id="profile-avatar-badge" class="absolute -bottom-1 -right-1 bg-white border-2 border-kidsPurple rounded-full w-10 h-10 flex items-center justify-center text-xl shadow">🔑</div>
                     </div>
 
                     <div>
-                        <h2 id="profile-avatar-title" class="text-xl font-bold text-textDark">Classic Monty 🧙‍♂️</h2>
-                        <p id="profile-avatar-desc" class="text-xs text-textLight mt-1 max-w-sm mx-auto">A wise young python wizard with a starry violet hat.</p>
+                        <h2 id="profile-avatar-title" class="text-xl font-bold text-textDark">Terminal Console AI 💻</h2>
+                        <p id="profile-avatar-desc" class="text-xs text-textLight mt-1 max-w-sm mx-auto">Core systemic AI compiler designed for micro-service diagnostics.</p>
                     </div>
 
                     <!-- Companion Chooser -->
                     <div class="space-y-3 pt-2 text-left">
-                        <h4 class="font-bold text-xs text-kidsPurple tracking-wide uppercase">Summon Your Code Companion 🐍</h4>
+                        <h4 class="font-bold text-xs text-kidsPurple tracking-wide uppercase">Activate System AI Companion 💻</h4>
                         <div class="grid grid-cols-4 gap-2" id="avatar-chooser-grid">
                             <!-- Avatars rendered here by JS -->
                         </div>
@@ -267,8 +334,8 @@
                 <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow space-y-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h4 class="font-bold text-textDark">Python XP Magical Reservoir ✨</h4>
-                            <p id="profile-level-title" class="text-xs font-bold text-kidsOrange">Python Hatchling 🥚</p>
+                            <h4 class="font-bold text-textDark">Terminal XP Buffer Capacity ✨</h4>
+                            <p id="profile-level-title" class="text-xs font-bold text-kidsOrange">Core Novice 💻</p>
                         </div>
                         <div id="profile-level-badge" class="bg-amber-100 text-kidsOrange text-sm font-black px-3.5 py-1.5 rounded-2xl">LVL 1</div>
                     </div>
@@ -288,7 +355,7 @@
                 <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow space-y-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h4 class="font-bold text-textDark">Magical Streak Flame 🔥</h4>
+                            <h4 class="font-bold text-textDark">Terminal Activity Flame 🔥</h4>
                             <p class="text-xs text-textLight">Learn daily to keep the fire lit!</p>
                         </div>
                         <div class="flex items-center gap-1 bg-orange-100 border-2 border-orange-200 text-orange-600 px-3 py-1.5 rounded-full font-bold text-sm">
@@ -344,7 +411,7 @@
                     <div class="bg-white rounded-3xl border-2 border-kidsBorder p-6 shadow space-y-4">
                         <div class="flex items-center gap-3">
                             <span class="text-4xl animate-bounce">💬</span>
-                            <h4 class="font-black text-kidsPurple">Monty's Lesson Guide</h4>
+                            <h4 class="font-black text-kidsPurple">System Compile Guide</h4>
                         </div>
                         <p id="quest-story" class="text-sm text-textDark leading-relaxed">Let's learn how to print characters!</p>
                     </div>
@@ -352,14 +419,14 @@
                     <!-- Instructions Box -->
                     <div class="bg-indigo-50 border-2 border-indigo-200 rounded-3xl p-5 space-y-2">
                         <h4 class="font-bold text-sm text-indigo-900 flex items-center gap-1.5">
-                            <i class="fa-solid fa-magic text-kidsPurple"></i> Your Spell Goal:
+                            <i class="fa-solid fa-terminal text-kidsPurple"></i> Your Compilation Goal:
                         </h4>
                         <p id="quest-instruction" class="text-xs text-indigo-950 font-medium leading-relaxed">Summon your animal!</p>
                     </div>
 
                     <!-- Concept Explanation (Collapsible/Static) -->
                     <div class="bg-white rounded-3xl border-2 border-kidsBorder p-5 shadow space-y-2 mt-auto">
-                        <h4 id="quest-concept-title" class="font-bold text-sm text-textDark">The print() Spell</h4>
+                        <h4 id="quest-concept-title" class="font-bold text-sm text-textDark">The print() Function</h4>
                         <p id="quest-concept-desc" class="text-xs text-textLight leading-relaxed">Explanation goes here.</p>
                     </div>
                 </div>
@@ -374,7 +441,7 @@
                                 <span class="w-3 h-3 bg-red-500 rounded-full"></span>
                                 <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
                                 <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-                                <span class="text-slate-400 text-xs font-semibold ml-2 font-mono">spell_workspace.py</span>
+                                <span class="text-slate-400 text-xs font-semibold ml-2 font-mono">main.py</span>
                             </div>
                             <button onclick="resetQuestCode()" class="text-slate-400 hover:text-white transition text-xs font-bold flex items-center gap-1">
                                 <i class="fa-solid fa-arrow-rotate-left"></i> Reset
@@ -580,13 +647,13 @@ print(apples + oranges)</textarea>
                 <div class="text-6xl animate-bounce">✨🏆✨</div>
 
                 <div>
-                    <div class="text-xs font-black text-kidsPurple tracking-wider uppercase mb-1">Magical Milestone!</div>
+                    <div class="text-xs font-black text-kidsPurple tracking-wider uppercase mb-1">Compile Milestone!</div>
                     <h2 class="text-2xl font-black text-textDark">POWER LEVEL UP!</h2>
-                    <p id="modal-level-title" class="text-sm font-bold text-kidsOrange mt-1">Snakelet Wizard 🐍</p>
+                    <p id="modal-level-title" class="text-sm font-bold text-kidsOrange mt-1">System Engineer 💻</p>
                 </div>
 
                 <p id="modal-level-desc" class="text-xs text-textLight leading-relaxed">
-                    Amazing job! Your wizard spells have accumulated legendary coding strength! Keep casting print, loops, and conditions to reach elite Archmage status!
+                    System bypass successful! Your custom compiled scripts have verified standard network integration. Continue building automation scripts, loops, and conditional deciders to unlock Lead Devops status.
                 </p>
 
                 <button onclick="dismissLevelUpModal()" class="w-full py-3 bg-kidsPurple hover:bg-violet-700 text-white font-extrabold rounded-2xl shadow-lg transition transform hover:scale-[1.02]">
@@ -603,63 +670,63 @@ print(apples + oranges)</textarea>
         const quests = [
             {
                 id: "quest_1",
-                title: "Summon Your First Animal!",
-                levelName: "Level 1: Say Hello!",
-                icon: "🐍",
-                description: "Learn how to use Python's print() magic spell to display characters on the screen!",
-                story: "Hi there, aspiring coder! I'm Monty, your Python snake friend. 🐍 In Python, we have a magic command called print(). Whatever you put inside this command, Python will show it on the screen! Today, a lonely lion wants to come out and play on our meadow. Can you help me summon him?",
-                instruction: "Tap the puzzle blocks to write print(\"🦁\") and click the RUN button to summon your lion!",
-                startingCode: "# Summon a lion here!\n",
-                blocks: ["print(", "\"🦁\"", "\"🍕\"", "\"🚀\"", ")"],
+                title: "Boot Up the AI Core!",
+                levelName: "Level 1: System Boot",
+                icon: "🤖",
+                description: "Run your first Python output command to initialize the system console!",
+                story: "Welcome to the Python Quest Cyber Terminal. You are initiating standard mainframe terminal access. In Python, the print() function sends data out to the display buffer. Let's start by waking up the primary AI Daemon (represented by 🤖) to verify system-wide visual response.",
+                instruction: "Tap the puzzle blocks to write print(\"🤖\") and execute the runtime!",
+                startingCode: "# Wake up the AI Daemon!\n",
+                blocks: ["print(", "\"🤖\"", "\"💥\"", "\"⚡\"", ")"],
                 targetKeyword: "print",
-                targetEmoji: "🦁",
-                conceptTitle: "The print() Spell",
-                conceptExplanation: "In Python, print() is a built-in function. It takes whatever is inside the parentheses (like text or an emoji) and displays it on the screen! Strings are written inside quotes (like \"🦁\") so Python knows it is text."
+                targetEmoji: "🤖",
+                conceptTitle: "Standard Output",
+                conceptExplanation: "The print() function is the fundamental way to communicate with developers. It evaluates the expression inside the parentheses (arguments) and writes it to the standard output terminal. String literals are enclosed in quotes."
             },
             {
                 id: "quest_2",
-                title: "The Magical Variable Box",
-                levelName: "Level 2: Variables!",
-                icon: "🎁",
-                description: "Discover Variables - special named containers where you can store values!",
-                story: "Woah! You're a natural! Now, imagine you have a secret storage box. 🎁 In Python, we call this a variable. You can give the box any name you like, and put a value (like a balloon \"🎈\") inside it! Later, when you print the name of the variable, Python will retrieve the value!",
-                instruction: "Create a box named 'toy' and store \"🎈\" in it. Then, print(toy) to let it float!",
-                startingCode: "toy = \"🎈\"\n# Write print(toy) below:\n",
-                blocks: ["print(", "toy", "\"🎈\"", ")"],
-                targetKeyword: "print(toy)",
-                targetEmoji: "🎈",
-                conceptTitle: "Variables (Data Containers)",
-                conceptExplanation: "A variable is like a named box in computer memory. Here, 'toy' is the name of the box, and we used '=' to put the balloon '🎈' inside it. When you run print(toy), Python looks inside the box named 'toy' and displays the balloon!"
+                title: "Memory Allocation Key",
+                levelName: "Level 2: Variables",
+                icon: "🔑",
+                description: "Discover Variables - named memory locations used to store program data dynamically!",
+                story: "Console initialized. Next, we must register credentials. In programming, we store values in memory using 'variables' (custom labeled containers). By assigning an access token (like a key \"🔑\") to a variable name, we can refer back to it and execute authorization scripts seamlessly!",
+                instruction: "Create a box named 'token' and store \"🔑\" in it. Then, print(token) to request node access!",
+                startingCode: "token = \"🔑\"\n# Write print(token) below to load the credentials:\n",
+                blocks: ["print(", "token", "\"🔑\"", ")"],
+                targetKeyword: "print(token)",
+                targetEmoji: "🔑",
+                conceptTitle: "Variable Assignment",
+                conceptExplanation: "Variables hold values so your programs can remember and manipulate data. Writing token = \"🔑\" assigns the string \"🔑\" to the variable named 'token'. Calling print(token) retrieves whatever is currently stored in that address."
             },
             {
                 id: "quest_3",
-                title: "The Copy Machine",
-                levelName: "Level 3: Super Loops!",
-                icon: "🔄",
-                description: "Use loops to repeat your commands and spawn a whole shower of stars!",
-                story: "Amazing! Now, what if you wanted to summon 3 shiny stars? ⭐⭐⭐ Typing print() three times is too tiring! Instead, we can use a loop. A loop is like an automated machine that repeats your commands as many times as you want!",
-                instruction: "Write a loop to print(\"⭐\") three times!",
-                startingCode: "for i in range(3):\n    # Type print(\"⭐\") below (make sure to indent it with spaces!):\n    ",
-                blocks: ["for i in range(3):", "  print(", "\"⭐\"", ")"],
+                title: "Threat Mitigation Loop",
+                levelName: "Level 3: Automation Loops",
+                icon: "🛡️",
+                description: "Automate security loops to clear firewall blocks with repeated shield pings!",
+                story: "Alert! Minor intrusion detected in firewall sector 3. To defend our subnet, we need to deploy three visual defensive shields. Instead of writing print statements over and over, professional developers automate execution using a 'for loop'!",
+                instruction: "Write an automated loop to print(\"🛡️\") three times and secure the sector!",
+                startingCode: "for i in range(3):\n    # Type print(\"🛡️\") below (make sure to indent it with spaces!):\n    ",
+                blocks: ["for i in range(3):", "  print(", "\"🛡️\"", ")"],
                 targetKeyword: "range(3)",
-                targetEmoji: "⭐",
+                targetEmoji: "🛡️",
                 conceptTitle: "For Loops",
-                conceptExplanation: "A 'for' loop tells Python to repeat a block of code. 'for i in range(3):' means 'repeat the indented lines under me exactly 3 times!'. Python uses indentation (spaces) to know which lines belong inside the loop."
+                conceptExplanation: "A 'for' loop tells Python to repeat a block of code. 'for i in range(3):' means 'repeat the indented lines under me exactly 3 times!'. Python uses indentation (spaces) to define block scoping."
             },
             {
                 id: "quest_4",
-                title: "The Decision Maker",
-                levelName: "Level 4: If Statements!",
-                icon: "🚦",
-                description: "Teach Python how to make smart choices using true/false conditions!",
-                story: "You are practically a Python Master now! 🎓 Sometimes, computer programs need to make choices based on conditions. Like: If it is sunny, show a sun! Otherwise (else), show rain! We can do this using 'if' and 'else'. Let's see if we can reward a high score!",
-                instruction: "Make Python choose what to print! If the score is high, print a trophy \"🏆\"!",
-                startingCode: "score = 10\nif score > 5:\n    # Print a trophy here!\n    \nelse:\n    print(\"🌧️\")\n",
-                blocks: ["print(", "\"🏆\"", "\"😢\"", ")"],
+                title: "The Decryption Branch Gate",
+                levelName: "Level 4: Boolean Conditions",
+                icon: "🔓",
+                description: "Design an active decider that branches execution based on system conditions!",
+                story: "Excellent progress, Operator. We're at the bypass router! Sometimes programs make logical choices dynamically based on variables. If system power is optimal, output '🔓' to bypass the node; otherwise (else), return the alert '🚨'. Let's write the decider!",
+                instruction: "Complete the decider block! If system power is high, output the bypass signal \"🔓\"!",
+                startingCode: "power = 10\nif power > 5:\n    # Print the bypass success signal '🔓' here!\n    \nelse:\n    print(\"🚨\")\n",
+                blocks: ["print(", "\"🔓\"", "\"🚨\"", ")"],
                 targetKeyword: "if",
-                targetEmoji: "🏆",
-                conceptTitle: "If-Else Statements",
-                conceptExplanation: "An 'if' statement tests a condition (like 'is the score greater than 5?'). If that condition is true, Python runs the code block directly under 'if'. If it is false, Python skips to the 'else:' block!"
+                targetEmoji: "🔓",
+                conceptTitle: "Conditional Logic",
+                conceptExplanation: "An 'if' statement tests a boolean expression. If that condition is true, only the block indented under 'if' runs. Otherwise, execution shifts to the 'else:' block. This is how programs make adaptive decisions."
             }
         ];
 
@@ -729,36 +796,36 @@ print(apples + oranges)</textarea>
         const avatars = [
             {
                 id: "classic",
-                name: "Classic Monty 🧙‍♂️",
-                emoji: "🔮",
-                desc: "A wise young python wizard with a starry violet hat.",
+                name: "Console Core AI 💻",
+                emoji: "💻",
+                desc: "Core systemic AI compiler designed for micro-service diagnostics.",
                 startColor: "#8B5CF6",
                 endColor: "#6366F1",
                 glowColor: "#A78BFA"
             },
             {
                 id: "sparky",
-                name: "Sparky Lightning ⚡",
+                name: "Hyper Threads ⚡",
                 emoji: "⚡",
-                desc: "Runs at hyper-speed powered by electricity!",
+                desc: "Enables parallel processing loops with zero memory bottlenecks!",
                 startColor: "#F59E0B",
                 endColor: "#EF4444",
                 glowColor: "#FCD34D"
             },
             {
                 id: "glow",
-                name: "Neon Sorcerer 🌀",
+                name: "Daemon Gateway 🌀",
                 emoji: "🌀",
-                desc: "Glows with celestial indigo starlight.",
+                desc: "Reroutes and filters packet structures across standard cloud portals.",
                 startColor: "#EC4899",
                 endColor: "#8B5CF6",
                 glowColor: "#F472B6"
             },
             {
                 id: "cosmic",
-                name: "Cosmic Archmage 👑",
+                name: "Root Mainframe 👑",
                 emoji: "👑",
-                desc: "The ultimate star-traveler of the coding galaxy.",
+                desc: "Accesses higher root authorization boundaries on cyber networks.",
                 startColor: "#10B981",
                 endColor: "#3B82F6",
                 glowColor: "#6EE7B7"
@@ -768,9 +835,9 @@ print(apples + oranges)</textarea>
         const badges = [
             {
                 id: "hatchling",
-                title: "Hatchling Badge 🥚",
-                description: "You took your first magical steps in Python Quest!",
-                iconEmoji: "🐣",
+                title: "Initialize Kernel 💻",
+                description: "You successfully configured your first local developer environment!",
+                iconEmoji: "💻",
                 bgStart: "#4ADE80",
                 bgEnd: "#22C55E",
                 checkCondition: (xp, streak, questsCount) => true,
@@ -778,8 +845,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "sandbox",
-                title: "Sandbox Maestro 🎈",
-                description: "Unlocked by experimenting inside the Free Coding Sandbox!",
+                title: "Sandbox Operator 🧪",
+                description: "Unlocked by running custom experiments in the compiler sandbox!",
                 iconEmoji: "🧪",
                 bgStart: "#FBBF24",
                 bgEnd: "#F59E0B",
@@ -788,9 +855,9 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "first_spell",
-                title: "First Spell 🔮",
-                description: "Casted your first successfully compiled program!",
-                iconEmoji: "✨",
+                title: "Successful Compile 🛡️",
+                description: "Successfully compiled and verified your first executable script block!",
+                iconEmoji: "🛡️",
                 bgStart: "#818CF8",
                 bgEnd: "#6366F1",
                 checkCondition: (xp, streak, questsCount) => questsCount >= 1,
@@ -798,8 +865,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "streak_warrior",
-                title: "Streak Wizard ⭐",
-                description: "Kept your magical learning streak burning for 3+ days!",
+                title: "Reliability Node ⭐",
+                description: "Demonstrated 100% server uptime and continuous activity for 3+ days!",
                 iconEmoji: "🔥",
                 bgStart: "#F87171",
                 bgEnd: "#EF4444",
@@ -808,8 +875,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "spellslinger",
-                title: "Spellslinger Elite ⚡",
-                description: "Accumulated over 500 magical Python XP points!",
+                title: "Subnet Architect ⚡",
+                description: "Successfully buffered and processed more than 500 total XP points!",
                 iconEmoji: "⚡",
                 bgStart: "#A78BFA",
                 bgEnd: "#8B5CF6",
@@ -818,8 +885,8 @@ print(apples + oranges)</textarea>
             },
             {
                 id: "archmage",
-                title: "Grand Archmage 👑",
-                description: "The ultimate honor! Complete all 4 quests to join the Council.",
+                title: "System Chief 👑",
+                description: "The ultimate developer accolade! Cleared all 4 core quest modules.",
                 iconEmoji: "👑",
                 bgStart: "#F472B6",
                 bgEnd: "#EC4899",
@@ -840,6 +907,146 @@ print(apples + oranges)</textarea>
             selectedBookIndex: 0,
             selectedChapterIndex: 0
         };
+
+        // --- PHASER ARCADE ENGINE AND HOOKS ---
+        let phaserGame = null;
+        let arcadePlayer = null;
+        let arcadeToken = null;
+        let arcadeScore = 0;
+        let arcadeControls = null;
+
+        function initPhaserArcade() {
+            if (phaserGame) return; // Prevent double init
+            const config = {
+                type: Phaser.AUTO,
+                parent: 'phaser-game-container',
+                width: 450,
+                height: 220,
+                backgroundColor: '#070512',
+                physics: {
+                    default: 'arcade',
+                    arcade: { debug: false }
+                },
+                scene: {
+                    preload: preloadArcade,
+                    create: createArcade,
+                    update: updateArcade
+                }
+            };
+
+            phaserGame = new Phaser.Game(config);
+        }
+
+        function preloadArcade() {
+            // Textures generated programmatically
+        }
+
+        function createArcade() {
+            const scene = this;
+
+            // Draw grid lines
+            const graphics = scene.add.graphics();
+            graphics.lineStyle(1, '#2c2254', 0.4);
+            for (let x = 0; x < 450; x += 30) {
+                graphics.lineBetween(x, 0, x, 220);
+            }
+            for (let y = 0; y < 220; y += 30) {
+                graphics.lineBetween(0, y, 450, y);
+            }
+
+            // Create shape player (cyber-collecter block)
+            arcadePlayer = scene.physics.add.image(225, 110, null);
+            arcadePlayer.setDisplaySize(20, 20);
+            
+            // Draw player texture manually
+            const pTexture = scene.make.graphics({ x: 0, y: 0, add: false });
+            pTexture.fillStyle(0x00f5d4); // Cyan cyber green
+            pTexture.fillRect(0, 0, 20, 20);
+            pTexture.generateTexture('player_tex', 20, 20);
+            arcadePlayer.setTexture('player_tex');
+            arcadePlayer.setCollideWorldBounds(true);
+
+            // Create code token
+            arcadeToken = scene.physics.add.image(100, 80, null);
+            const tTexture = scene.make.graphics({ x: 0, y: 0, add: false });
+            tTexture.fillStyle(0xff2d55); // Neon Pink
+            tTexture.fillCircle(8, 8, 8);
+            tTexture.generateTexture('token_tex', 16, 16);
+            arcadeToken.setTexture('token_tex');
+
+            // Keyboard keys
+            if (scene.input && scene.input.keyboard) {
+                arcadeControls = scene.input.keyboard.createCursorKeys();
+            }
+
+            // Collision overlap check
+            scene.physics.add.overlap(arcadePlayer, arcadeToken, (player, token) => {
+                // Relocate token randomly
+                const rx = Phaser.Math.Between(30, 420);
+                const ry = Phaser.Math.Between(30, 190);
+                token.setPosition(rx, ry);
+
+                // Increment score
+                arcadeScore++;
+                
+                // Show floating compiled code particle
+                const txt = scene.add.text(player.x, player.y - 15, "print()", { font: 'bold 12px monospace', fill: '#00f5d4' }).setOrigin(0.5);
+                scene.tweens.add({
+                    targets: txt,
+                    y: player.y - 50,
+                    alpha: 0,
+                    duration: 800,
+                    onComplete: () => txt.destroy()
+                });
+
+                if (arcadeScore === 3) {
+                    // Reward 100 XP on collecting 3 tokens
+                    addXpPoints(100, "Arcade Terminal Bypass");
+                    triggerConfettiEffect();
+                    
+                    // Reset arcade score
+                    arcadeScore = 0;
+                    
+                    // Temporary banner on canvas
+                    const banner = scene.add.text(225, 110, "CORE SYSTEM BYPASSED!\n+100 XP REWARDED", { font: 'bold 16px monospace', fill: '#00f5d4', align: 'center', backgroundColor: '#0c091a', padding: 8 }).setOrigin(0.5);
+                    scene.tweens.add({
+                        targets: banner,
+                        alpha: 0,
+                        delay: 1500,
+                        duration: 800,
+                        onComplete: () => banner.destroy()
+                    });
+                }
+            });
+        }
+
+        function updateArcade() {
+            if (!arcadePlayer || !arcadeControls) return;
+
+            arcadePlayer.setVelocity(0);
+
+            if (arcadeControls.left.isDown) {
+                arcadePlayer.setVelocityX(-140);
+            } else if (arcadeControls.right.isDown) {
+                arcadePlayer.setVelocityX(140);
+            }
+
+            if (arcadeControls.up.isDown) {
+                arcadePlayer.setVelocityY(-140);
+            } else if (arcadeControls.down.isDown) {
+                arcadePlayer.setVelocityY(140);
+            }
+        }
+
+        function sendArcadeMove(dir) {
+            if (!arcadePlayer) return;
+            switch(dir) {
+                case 'left': arcadePlayer.x = Math.max(15, arcadePlayer.x - 30); break;
+                case 'right': arcadePlayer.x = Math.min(435, arcadePlayer.x + 30); break;
+                case 'up': arcadePlayer.y = Math.max(15, arcadePlayer.y - 30); break;
+                case 'down': arcadePlayer.y = Math.min(205, arcadePlayer.y + 30); break;
+            }
+        }
 
         // --- ONBOARDING ROUTER ---
         function initApp() {
@@ -894,6 +1101,10 @@ print(apples + oranges)</textarea>
                 document.getElementById("screen-onboarding").classList.remove("hidden");
             } else if (state.currentScreen === "dashboard") {
                 document.getElementById("screen-dashboard").classList.remove("hidden");
+                // Boot Phaser Arcade if not initialized
+                if (!phaserGame) {
+                    setTimeout(initPhaserArcade, 100);
+                }
             } else if (state.currentScreen === "profile") {
                 document.getElementById("screen-profile").classList.remove("hidden");
             } else if (state.currentScreen === "quest") {
@@ -907,11 +1118,11 @@ print(apples + oranges)</textarea>
 
         // --- METRICS RECOMPILER (XP, Levels, Progress) ---
         function getLevelData(xp) {
-            if (xp < 200) return { level: 1, title: "Python Hatchling 🥚", min: 0, max: 200, motivator: "Great start! Earn 200 XP to level up into a Snakelet Wizard! 🐍" };
-            if (xp < 500) return { level: 2, title: "Snakelet Wizard 🐍", min: 200, max: 500, motivator: "Wow, you're learning fast! 300 more XP to unlock Spellslinger! ⚡" };
-            if (xp < 900) return { level: 3, title: "Spellslinger ⚡", min: 500, max: 900, motivator: "Magic is flowing! 400 more XP to become Mage of Code! 🔮" };
-            if (xp < 1400) return { level: 4, title: "Mage of Code 🔮", min: 900, max: 1400, motivator: "Almost there! 500 more XP to achieve Python Archmage! 👑" };
-            return { level: 5, title: "Python Archmage 👑", min: 1400, max: 3000, motivator: "Incredible! You are a Python Archmage! Keep casting code spells! 👑⭐" };
+            if (xp < 200) return { level: 1, title: "Core Novice 💻", min: 0, max: 200, motivator: "Initialize core logic! Earn 200 XP to level up into System Engineer! 💻" };
+            if (xp < 500) return { level: 2, title: "System Engineer ⚙️", min: 200, max: 500, motivator: "Excellent optimization! 300 more XP to unlock Automation Specialist! ⚙️" };
+            if (xp < 900) return { level: 3, title: "Automation Specialist 🧠", min: 500, max: 900, motivator: "Code execution is fluid! 400 more XP to become Mainframe Architect! 🧠" };
+            if (xp < 1400) return { level: 4, title: "Mainframe Architect 🚀", min: 900, max: 1400, motivator: "Almost fully compiled! 500 more XP to achieve Devops Lead! 🚀" };
+            return { level: 5, title: "Devops Lead 👑🌌", min: 1400, max: 3000, motivator: "Outstanding performance! You are a Devops Lead! Keep deploying code modules! 👑🌌" };
         }
 
         function addXpPoints(points, reason) {
@@ -1300,12 +1511,12 @@ print(apples + oranges)</textarea>
 
             if (targetKeyword === "print") {
                 isSuccessful = code.includes("print") && code.includes(targetEmoji);
-            } else if (targetKeyword === "print(toy)") {
-                isSuccessful = normalizedCode.includes('toy="🎈"') && (normalizedCode.includes('print(toy)') || normalizedCode.includes("print('🎈')") || normalizedCode.includes('print("🎈")'));
+            } else if (targetKeyword === "print(toy)" || targetKeyword === "print(token)") {
+                isSuccessful = (normalizedCode.includes('toy="🎈"') || normalizedCode.includes('token="🔑"')) && (normalizedCode.includes('print(toy)') || normalizedCode.includes('print(token)') || normalizedCode.includes("print('🎈')") || normalizedCode.includes('print("🎈")') || normalizedCode.includes("print('🔑')") || normalizedCode.includes('print("🔑")'));
             } else if (targetKeyword === "range(3)") {
-                isSuccessful = code.includes("range(3)") && code.includes("print") && (code.includes("⭐") || fullOutput.includes("⭐"));
+                isSuccessful = code.includes("range(3)") && code.includes("print") && (code.includes("⭐") || fullOutput.includes("⭐") || code.includes("🛡️") || fullOutput.includes("🛡️"));
             } else if (targetKeyword === "if") {
-                isSuccessful = code.includes("if") && (code.includes("🏆") || fullOutput.includes("🏆"));
+                isSuccessful = code.includes("if") && (code.includes("🏆") || fullOutput.includes("🏆") || code.includes("🔓") || fullOutput.includes("🔓"));
             }
 
             if (hasSyntaxError) {
@@ -1317,7 +1528,7 @@ print(apples + oranges)</textarea>
             } else {
                 return {
                     success: false,
-                    output: fullOutput ? `${fullOutput}\n\n⚠️ Spell casted but didn't match the goal! Try again to print the target emoji.` : "⚠️ Try writing valid Python spell commands!"
+                    output: fullOutput ? `${fullOutput}\n\n⚠️ Script executed but output did not match the validation criteria! Try again to output the target character/data.` : "⚠️ Try writing valid Python executable scripts!"
                 };
             }
         }

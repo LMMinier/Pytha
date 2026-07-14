@@ -176,7 +176,7 @@ fun XpEarnedToast(
                     }
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "MAGICAL POWER UP! 🔮",
+                            text = "CORE COMPILATION COMPLETE! ⚡",
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFFFDE047)

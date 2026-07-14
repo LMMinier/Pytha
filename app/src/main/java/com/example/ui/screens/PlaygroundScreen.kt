@@ -318,15 +318,15 @@ fun PlaygroundScreen(
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.img_monty_avatar),
-                                contentDescription = "Monty Avatar",
+                                painter = painterResource(id = R.drawable.img_cyber_daemon),
+                                contentDescription = "Cyber Daemon Avatar",
                                 modifier = Modifier
                                     .size(44.dp)
                                     .clip(CircleShape)
                                     .border(2.dp, KidsPurple, CircleShape),
                                 contentScale = ContentScale.Crop
                             )
-                            Text("Monty's Code Review", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
+                            Text("AI Compiler Daemon", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
                         }
                     },
                     text = {

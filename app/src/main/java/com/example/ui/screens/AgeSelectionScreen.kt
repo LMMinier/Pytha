@@ -35,10 +35,10 @@ fun AgeSelectionScreen(
     val currentTier by viewModel.selectedAgeTier.collectAsState()
 
     val options = listOf(
-        AgeTierOption("8_10", "Ages 8 - 10 🎈", "Young Wizards", "Magical analogies, playful spells, and full gaming/story focus."),
-        AgeTierOption("11_13", "Ages 11 - 13 🚀", "Junior Coders", "Interactive blocks, gamified milestones, and simple game logic."),
-        AgeTierOption("14_17", "Ages 14 - 17 ⚙️", "Apprentice Engineers", "Real-world developer context, structured logic, and friendly mentorship."),
-        AgeTierOption("18_plus", "Ages 18+ 💡", "Curious Minds", "Clear programming workflows, conceptual explanations, and quick guides.")
+        AgeTierOption("8_10", "Cyberpunk Novice 💻", "Root Shell Access", "No prior coding experience. Learn Python via high-level visual analogies and fundamental terminal logic."),
+        AgeTierOption("11_13", "Scripting Apprentice ⚙️", "Automation Specialist", "Focus on practical automation: how variables, loops, and scripts can automate your daily workflows."),
+        AgeTierOption("14_17", "AI Apprentice 🧠", "Neural Net Developer", "Explore code logic, branches, and lists with an eye toward AI inputs, prompt chains, and datasets."),
+        AgeTierOption("18_plus", "Mainframe Architect 💡", "System Engineer", "Dive deep into clean programming workflows, structured backend concepts, and clean coding practices.")
     )
 
     Box(
@@ -60,8 +60,8 @@ fun AgeSelectionScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.img_onboarding_hero),
-                        contentDescription = "Onboarding Python Wizard",
+                        painter = painterResource(id = R.drawable.img_cyber_onboarding),
+                        contentDescription = "Onboarding Cyber Core",
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(180.dp)
@@ -71,7 +71,7 @@ fun AgeSelectionScreen(
                     )
                     Spacer(modifier = Modifier.height(24.dp))
                     Text(
-                        text = "Welcome to Python Quest!",
+                        text = "Python Quest: Cyber Terminal",
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Bold,
                         color = TextDark,
@@ -79,8 +79,8 @@ fun AgeSelectionScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Choose your path! How old are you?",
-                        fontSize = 16.sp,
+                        text = "Initialize Access Protocol: Select your specialization track",
+                        fontSize = 15.sp,
                         color = TextLight,
                         textAlign = TextAlign.Center
                     )
@@ -178,7 +178,7 @@ fun AgeSelectionScreen(
                     .testTag("onboarding_continue_button")
             ) {
                 Text(
-                    text = if (currentTier != null) "START QUEST! 🎯" else "Select your path",
+                    text = if (currentTier != null) "INITIALIZE CORE TERMINAL 🔓" else "Select Access Specialization",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White

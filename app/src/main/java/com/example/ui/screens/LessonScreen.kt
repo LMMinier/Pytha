@@ -390,7 +390,7 @@ fun LessonScreen(
                     onDismissRequest = { showMontyDialog = false },
                     confirmButton = {
                         TextButton(onClick = { showMontyDialog = false }) {
-                            Text("Thanks, Monty!", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
+                            Text("Acknowledge", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
                         }
                     },
                     title = {
@@ -399,15 +399,15 @@ fun LessonScreen(
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.img_monty_avatar),
-                                contentDescription = "Monty Avatar",
+                                painter = painterResource(id = R.drawable.img_cyber_daemon),
+                                contentDescription = "Cyber Daemon Avatar",
                                 modifier = Modifier
                                     .size(44.dp)
                                     .clip(CircleShape)
                                     .border(2.dp, KidsPurple, CircleShape),
                                 contentScale = ContentScale.Crop
                             )
-                            Text("Monty Says...", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
+                            Text("System Daemon Advice...", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = KidsPurple)
                         }
                     },
                     text = {
